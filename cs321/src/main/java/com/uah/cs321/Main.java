@@ -10,5 +10,12 @@ package com.uah.cs321;
  * @author colin
  */
 public class Main {
-    
+
+    public static void main(String[] args){
+        
+            MainFrame.openWindow();
+
+    }
+
+  
 }

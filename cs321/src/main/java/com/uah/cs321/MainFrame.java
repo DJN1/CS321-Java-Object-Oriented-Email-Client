@@ -87,11 +87,6 @@ public class MainFrame extends javax.swing.JFrame {
         emailListPanel.setBackground(new java.awt.Color(153, 153, 153));
         emailListPanel.setForeground(new java.awt.Color(204, 204, 204));
 
-        emailList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         emailListScrollPanel.setViewportView(emailList);
 
         javax.swing.GroupLayout emailListPanelLayout = new javax.swing.GroupLayout(emailListPanel);
@@ -180,7 +175,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void openWindow() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
