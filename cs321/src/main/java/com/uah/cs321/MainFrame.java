@@ -5,6 +5,7 @@
  */
 package com.uah.cs321;
 
+import javax.swing.DefaultListModel;
 /**
  *
  * @author colin
@@ -38,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         switchUserSiteButton = new javax.swing.JButton();
         emailListPanel = new javax.swing.JPanel();
         emailListScrollPanel = new javax.swing.JScrollPane();
+        model = new DefaultListModel();
         emailList = new javax.swing.JList<>();
         inboxLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
@@ -48,6 +50,11 @@ public class MainFrame extends javax.swing.JFrame {
         composeEmailButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         composeEmailButton.setForeground(new java.awt.Color(0, 0, 0));
         composeEmailButton.setText("Compose Email");
+        composeEmailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                composeEmailButtonActionPerformed(evt);
+            }
+        });
 
         emailBoxesLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         emailBoxesLabel.setText("Email Boxes");
@@ -60,14 +67,29 @@ public class MainFrame extends javax.swing.JFrame {
         inboxButton.setMaximumSize(new java.awt.Dimension(72, 22));
         inboxButton.setMinimumSize(new java.awt.Dimension(72, 22));
         inboxButton.setPreferredSize(new java.awt.Dimension(72, 22));
+        inboxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inboxButtonActionPerformed(evt);
+            }
+        });
 
         sentButton.setBackground(new java.awt.Color(153, 204, 255));
         sentButton.setForeground(new java.awt.Color(0, 0, 0));
         sentButton.setText("Sent");
+        sentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sentButtonActionPerformed(evt);
+            }
+        });
 
         trashButton.setBackground(new java.awt.Color(153, 204, 255));
         trashButton.setForeground(new java.awt.Color(0, 0, 0));
         trashButton.setText("Trash");
+        trashButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trashButtonActionPerformed(evt);
+            }
+        });
 
         settingsLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         settingsLabel.setText("Settings");
@@ -75,18 +97,34 @@ public class MainFrame extends javax.swing.JFrame {
         manageSitesButton.setBackground(new java.awt.Color(153, 204, 255));
         manageSitesButton.setForeground(new java.awt.Color(0, 0, 0));
         manageSitesButton.setText("Manage Sites");
+        manageSitesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageSitesButtonActionPerformed(evt);
+            }
+        });
 
         manageUsersButton.setBackground(new java.awt.Color(153, 204, 255));
         manageUsersButton.setForeground(new java.awt.Color(0, 0, 0));
         manageUsersButton.setText("Manage Users");
+        manageUsersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageUsersButtonActionPerformed(evt);
+            }
+        });
 
         switchUserSiteButton.setBackground(new java.awt.Color(153, 204, 255));
         switchUserSiteButton.setForeground(new java.awt.Color(0, 0, 0));
         switchUserSiteButton.setText("<html>&nbsp Switch <br> User/Site </html>");
+        switchUserSiteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                switchUserSiteButtonActionPerformed(evt);
+            }
+        });
 
         emailListPanel.setBackground(new java.awt.Color(153, 153, 153));
         emailListPanel.setForeground(new java.awt.Color(204, 204, 204));
 
+        emailList.setModel(model);
         emailListScrollPanel.setViewportView(emailList);
 
         javax.swing.GroupLayout emailListPanelLayout = new javax.swing.GroupLayout(emailListPanel);
@@ -172,10 +210,38 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void composeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_composeEmailButtonActionPerformed
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_composeEmailButtonActionPerformed
+
+    private void inboxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inboxButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inboxButtonActionPerformed
+
+    private void sentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sentButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sentButtonActionPerformed
+
+    private void trashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trashButtonActionPerformed
+
+    private void manageSitesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSitesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageSitesButtonActionPerformed
+
+    private void manageUsersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageUsersButtonActionPerformed
+
+    private void switchUserSiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_switchUserSiteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_switchUserSiteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void openWindow() {
+    public void openWindow() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -206,6 +272,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void AddItemToList(String item){  
+        model.addElement(item);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountLabel;
@@ -223,4 +293,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton switchUserSiteButton;
     private javax.swing.JButton trashButton;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.DefaultListModel model;
 }

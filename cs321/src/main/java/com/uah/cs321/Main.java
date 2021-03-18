@@ -14,7 +14,9 @@ public class Main {
     public static void main(String[] args){
         
         //Opening GUI
-        MainFrame.openWindow();
+        MainFrame testFrame = new MainFrame();
+        
+        testFrame.openWindow();
 
     }
 
