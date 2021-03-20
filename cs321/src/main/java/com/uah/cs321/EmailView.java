@@ -102,6 +102,9 @@ public class EmailView extends javax.swing.JDialog {
                 // TODO add your handling code here:
         }//GEN-LAST:event_jTextField2ActionPerformed
 
+        public void setBody(String text){
+            this.jTextArea1.setText(text);
+        }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel jLabel1;
