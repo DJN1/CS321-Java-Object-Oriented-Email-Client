@@ -12,12 +12,10 @@ package com.uah.cs321;
 public class Main {
 
     public static void main(String[] args){
-        
+
         //Opening GUI
         MainFrame testFrame = new MainFrame();
-        
         testFrame.openWindow();
-
     }
 
   
