@@ -8,7 +8,7 @@ package com.uah.cs321;
 import javax.swing.DefaultListModel;
 /**
  *
- * @author colin
+ * @author colin, david
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -211,7 +211,8 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void composeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_composeEmailButtonActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+	new CompoeseEmailDialog(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_composeEmailButtonActionPerformed
 
     private void inboxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inboxButtonActionPerformed
