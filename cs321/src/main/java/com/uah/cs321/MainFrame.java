@@ -212,7 +212,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void composeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_composeEmailButtonActionPerformed
         // TODO add your handling code here:
-	new CompoeseEmailDialog(this, rootPaneCheckingEnabled).setVisible(true);
+	new ComposeEmailDialog(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_composeEmailButtonActionPerformed
 
     private void inboxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inboxButtonActionPerformed
