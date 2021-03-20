@@ -245,15 +245,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_composeEmailButtonActionPerformed
 
     private void inboxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inboxButtonActionPerformed
-        // TODO add your handling code here:
+        Inboxes testInboxes = new Inboxes();
+        testInboxes.openInbox();
     }//GEN-LAST:event_inboxButtonActionPerformed
 
     private void sentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sentButtonActionPerformed
-        // TODO add your handling code here:
+        Inboxes testInboxes = new Inboxes();
+        
+        testInboxes.openSent();
     }//GEN-LAST:event_sentButtonActionPerformed
 
     private void trashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashButtonActionPerformed
-        // TODO add your handling code here:
+         Inboxes testInboxes = new Inboxes();
+        
+        testInboxes.openTrash();
     }//GEN-LAST:event_trashButtonActionPerformed
 
     private void manageSitesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSitesButtonActionPerformed
