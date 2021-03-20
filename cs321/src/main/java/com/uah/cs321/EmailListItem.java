@@ -36,7 +36,8 @@ public class EmailListItem extends javax.swing.JPanel {
 
                 jLabel1.setText("jLabel1");
 
-                setPreferredSize(new java.awt.Dimension(1141, 64));
+                setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+                setPreferredSize(new java.awt.Dimension(967, 64));
                 addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 formMouseClicked(evt);
@@ -59,9 +60,9 @@ public class EmailListItem extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel2)
-                                .addGap(469, 469, 469)
+                                .addGap(392, 392, 392)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
                                 .addComponent(jLabel3)
                                 .addContainerGap())
                 );
@@ -73,7 +74,7 @@ public class EmailListItem extends javax.swing.JPanel {
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel4))
-                                .addContainerGap(21, Short.MAX_VALUE))
+                                .addContainerGap(19, Short.MAX_VALUE))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
