@@ -9,12 +9,12 @@ package com.uah.cs321;
  *
  * @author David
  */
-public class CompoeseEmailDialog extends javax.swing.JDialog {
+public class ComposeEmailDialog extends javax.swing.JDialog {
 
 	/**
 	 * Creates new form CompoeseEmailDialog
 	 */
-	public CompoeseEmailDialog(java.awt.Frame parent, boolean modal) {
+	public ComposeEmailDialog(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 	}
