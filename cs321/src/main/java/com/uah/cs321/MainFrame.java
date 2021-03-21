@@ -1,14 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class: MainFrame.java
+ * Purpose: This class is the base frame for the email client.
+ *
  */
 package com.uah.cs321;
 
 import javax.swing.DefaultListModel;
 /**
  *
- * @author colin, david
+ * @author Colin O'Kain, david
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -259,15 +259,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void manageSitesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSitesButtonActionPerformed
         // TODO add your handling code here:
-        
+        ManageSites.ManageSitesPanel();
     }//GEN-LAST:event_manageSitesButtonActionPerformed
 
     private void manageUsersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersButtonActionPerformed
         // TODO add your handling code here:
+        ManageUsers.ManageUsersPanel();
     }//GEN-LAST:event_manageUsersButtonActionPerformed
 
     private void switchUserSiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_switchUserSiteButtonActionPerformed
         // TODO add your handling code here:
+        SwitchSettings.SwitchSettingsPanel();
     }//GEN-LAST:event_switchUserSiteButtonActionPerformed
 
     /**
