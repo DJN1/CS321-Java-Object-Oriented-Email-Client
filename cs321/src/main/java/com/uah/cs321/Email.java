@@ -6,13 +6,13 @@ import java.util.Date;
  *
  * @author David
  */
-// SENDER AND RECIPIENT WILL BE USERS LATER
 public class Email {
 
-	private final String subject, body, sender, recipient;
+	private final String subject, body;
 	private final Date timeStamp;
+	private final User sender, recipient;
 
-	public Email(String subject, String body, String sender, String recipient) {
+	public Email(String subject, String body, User sender, User recipient) {
 		this.subject = subject;
 		this.body = body;
 		this.sender = sender;
@@ -32,11 +32,11 @@ public class Email {
 		return this.body;
 	}
 
-	public String getSender() {
+	public User getSender() {
 		return this.sender;
 	}
 
-	public String getRecipient() {
+	public User getRecipient() {
 		return this.recipient;
 	}
 
