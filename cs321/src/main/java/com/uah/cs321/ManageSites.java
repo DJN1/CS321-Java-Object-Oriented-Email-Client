@@ -93,7 +93,7 @@ public class ManageSites {
 	// Allows an admin user to add site
 	private static void AddSite(JFrame relativeWindow) {
 		JFrame frame = new JFrame();
-		SimpleEmail email = SimpleEmail.getEmail();
+		SimpleEmail email = SimpleEmail.SimpleEmailInstance().getEmail();
 		frame.setSize(200, 200);
 		frame.setLocationRelativeTo(relativeWindow);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
