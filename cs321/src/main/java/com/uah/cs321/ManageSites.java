@@ -14,10 +14,12 @@ import javax.swing.*;
  */
 public class ManageSites 
 {
+    
     // Displays JFrame that holds buttons for adding/deleting users
     public static void ManageSitesPanel()
     {
         JFrame ms = new JFrame("Manage Sites");
+        
         ms.setSize(400, 400);
         ms.setLocationRelativeTo(null);
         //ms.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -46,12 +48,15 @@ public class ManageSites
     private static void DeleteSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        
+        SimpleEmail email = SimpleEmail.getEmail();
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        Object[] siteList = {"--Select a Site to Remove--", "Site 1", "Site 2", "Site 3", "Site 4", "Site 5"};
+        //String[] siteList = {"--Select a Site to Remove--", "Site 1", "Site 2", "Site 3", "Site 4", "Site 5"};
+        Object[] siteList = email.siteList.toArray();
+ 
+ 
         Object[] buttonOptions = {"Delete", "Cancel"};
 
         String siteToDelete = (String)JOptionPane.showInputDialog(frame, "Sites", "Remove a Site?", JOptionPane.YES_OPTION,
@@ -67,6 +72,7 @@ public class ManageSites
         
         if (!siteToDelete.equals(siteList[0]))
         {
+            email.RemoveSite(siteToDelete);
             result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete the site: " + siteToDelete + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         }
         
@@ -97,7 +103,7 @@ public class ManageSites
     private static void AddSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        
+        SimpleEmail email = SimpleEmail.getEmail();
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -112,6 +118,7 @@ public class ManageSites
                 
         if (!siteToAdd.isBlank())
         {
+            email.AddSite(siteToAdd);
             JOptionPane.showMessageDialog(frame, "Site successfully added!", "Success", JOptionPane.DEFAULT_OPTION);
         }
         else

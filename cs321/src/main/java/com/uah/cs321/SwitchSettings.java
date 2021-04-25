@@ -87,14 +87,14 @@ public class SwitchSettings
     private static void SwitchSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        
+        SimpleEmail email = SimpleEmail.getEmail();
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         String currentSite = "Site 1";
         String panelText = "Current Site: " + currentSite + "\n" + "\n" + "Sites";
-        Object[] siteList = {"--Select a Site--", "Site 1", "Site 2", "Site 3", "Site 4", "Site 5"};
+        Object[] siteList = email.siteList.toArray();
 
         String siteToSwitchTo = (String)JOptionPane.showInputDialog(frame, panelText, "Switch Site", JOptionPane.PLAIN_MESSAGE,
             null, siteList, siteList[0]);
@@ -114,6 +114,7 @@ public class SwitchSettings
         
         if (result == 0)
         {
+            email.SelectSite(siteToSwitchTo);
             JOptionPane.showMessageDialog(frame, "Site successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
             //System.out.print(siteToSwitchTo);
             //return siteToDelete;

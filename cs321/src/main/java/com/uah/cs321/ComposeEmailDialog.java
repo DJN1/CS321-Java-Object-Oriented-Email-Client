@@ -54,7 +54,6 @@ public class ComposeEmailDialog extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setBackground(new java.awt.Color(0, 255, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Send Email");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
