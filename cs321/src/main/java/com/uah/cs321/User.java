@@ -3,30 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uah.cs321;
-
-import java.util.ArrayList;
+package com.mycompany.groupproject3.zachwalker;
 
 /**
  *
- * @author colin
+ * @author Zach
  */
 public class User {
     
+    private final String userName;
+    private final String emailAddress;
+    private final String siteName;
+    private final Mailboxes userMailbox;
     
-    User(String name, Site constructorSite){
-        userName = name;
-        site = constructorSite;   
+    public User(String aUserName, String aSiteName)
+    {
+        this.userName = aUserName;
+        this.siteName = aSiteName;
+        this.emailAddress = this.userName + "@" + this.siteName;
+        this.userMailbox = new Mailboxes(this.emailAddress);
     }
-        
     
-    private String userName;
-    private Site site;
+    public String getUserName()
+    {
+        return this.userName;
+    }
     
-    private ArrayList<Email> trashBox = new ArrayList<Email>();
-    private ArrayList<Email> inBox = new ArrayList<Email>();
-    private ArrayList<Email> sentBox = new ArrayList<Email>();
-
+    public String getEmailAddress()
+    {
+        return this.emailAddress;
+    }
     
-
+    public String getSiteName()
+    {
+        return this.siteName;
+    }
+    
+    public Mailboxes getUserMailbox()
+    {
+        return this.userMailbox;
+    }
 }

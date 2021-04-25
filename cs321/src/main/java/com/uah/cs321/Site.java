@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uah.cs321;
+package com.mycompany.groupproject3.zachwalker;
 
 import java.util.ArrayList;
 
@@ -13,16 +13,22 @@ import java.util.ArrayList;
  */
 public class Site {
     
+    private ArrayList<User> userList;
+    private String name;
+    private String domainSuffix;
+    private String fullName;
+    private User activeUser;
     
     Site(String nameConstructor, String suffix){
         name = nameConstructor;
         domainSuffix = suffix;
+        fullName = name + domainSuffix;
+        userList = new ArrayList<>();
     }
     
     public String toString(){
         return name;
     }
-    
     
     public void AddUser(User user){
         userList.add(user);
@@ -36,14 +42,17 @@ public class Site {
         activeUser = user;
     }
     
-    public String GetName(){
+    public String GetName()
+    {
         return name;
     }
     
+    public String GetFullName(){
+        return fullName;
+    }
     
-    private ArrayList<User> userList = new ArrayList<User>();
-    private String name;
-    private String domainSuffix;
-    private User activeUser;
-
+    public ArrayList<User> getUserList()
+    {
+        return userList;
+    }
 }

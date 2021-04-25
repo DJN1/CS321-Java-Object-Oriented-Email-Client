@@ -1,47 +1,57 @@
-package com.uah.cs321;
+package com.mycompany.groupproject3.zachwalker;
+
 
 import java.util.Date;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
- * @author David
+ * @author Zach
  */
 public class Email {
-
-	private final String subject, body;
-	private final Date timeStamp;
-	private final User sender, recipient;
-
-	public Email(String subject, String body, User sender, User recipient) {
-		this.subject = subject;
-		this.body = body;
-		this.sender = sender;
-		this.recipient = recipient;
-		this.timeStamp = new Date();
-	}
-
-	public void delete() {
-		// deleteEmail(this);
-	}
-
-	public String getSubject() {
-		return this.subject;
-	}
-
-	public String getBody() {
-		return this.body;
-	}
-
-	public User getSender() {
-		return this.sender;
-	}
-
-	public User getRecipient() {
-		return this.recipient;
-	}
-
-	public Date getTimeStamp() {
-		return this.timeStamp;
-	}
-
+    
+    private final String subject;
+    private final String body;
+    private final Date timeStamp;
+    private final String recipientName;
+    private final String senderName;
+    
+    public Email(String aSubject, String aBody, String aReceiver, String aSender)
+    {
+        this.subject = aSubject;
+        this.body = aBody;
+        this.timeStamp = new Date();
+        this.recipientName = aReceiver;
+        this.senderName = aSender;
+    }
+    
+    public String getSubject()
+    {
+        return this.subject;
+    }
+    
+    public String getBody()
+    {
+        return this.body;
+    }
+    
+    public Date getTimeStamp()
+    {
+        return this.timeStamp;
+    }
+    
+    public String getRecipient()
+    {
+        return this.recipientName;
+    }
+    
+    public String getSender()
+    {
+        return this.senderName;
+    }
 }

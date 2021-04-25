@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uah.cs321;
+package com.mycompany.groupproject3.zachwalker;
 import java.util.ArrayList;
 /**
  *
@@ -11,19 +11,23 @@ import java.util.ArrayList;
  */
 public class SimpleEmail 
 {
-    public ArrayList<Site> siteList = new ArrayList<Site>();
+
+    private ArrayList<Site> siteList;
     private Site site;
     private Site currentSite;
-    private SimpleEmail(){
-        
+    private SimpleEmail email;
+    
+    public SimpleEmail(){
+        siteList = new ArrayList<>();
     }
-    private static SimpleEmail email;
-    public static SimpleEmail getEmail() 
+    
+    public SimpleEmail getEmail() 
     {
         if (email == null)
             email = new SimpleEmail();
         return email;
     }
+    
     public void AddSite(Site site){
         siteList.add(site);
         System.out.println("The site " + site.GetName() + " was added");
@@ -40,5 +44,8 @@ public class SimpleEmail
         System.out.println("The site " + site.GetName() + " was selected");
     }
     
-    
+    public ArrayList<Site> getAllSites()
+    {
+        return this.siteList;
+    }
 }
