@@ -80,7 +80,7 @@ public class SwitchSettings {
 	// Displays current user and list of users, prompting the admin user to switch sites
 	private static void SwitchSite(JFrame relativeWindow) {
 		JFrame frame = new JFrame();
-		SimpleEmail email = SimpleEmail.getEmail();
+		SimpleEmail email = SimpleEmail.SimpleEmailInstance().getEmail();
 		frame.setSize(200, 200);
 		frame.setLocationRelativeTo(relativeWindow);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

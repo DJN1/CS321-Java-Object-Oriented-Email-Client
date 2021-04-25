@@ -44,7 +44,7 @@ public class ManageSites {
 	// Displays current list of sites. Allows admin user to select a site for deletion.
 	private static void DeleteSite(JFrame relativeWindow) {
 		JFrame frame = new JFrame();
-		SimpleEmail email = SimpleEmail.getEmail();
+		SimpleEmail email = SimpleEmail.SimpleEmailInstance().getEmail();
 		frame.setSize(200, 200);
 		frame.setLocationRelativeTo(relativeWindow);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
