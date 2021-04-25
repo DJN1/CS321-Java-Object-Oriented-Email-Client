@@ -23,9 +23,9 @@ public class User {
     private String userName;
     private Site site;
     
-    private ArrayList<String> trashBox = new ArrayList<String>();
-    private ArrayList<String> inBox = new ArrayList<String>();
-    private ArrayList<String> sentBox = new ArrayList<String>();
+    private ArrayList<Email> trashBox = new ArrayList<Email>();
+    private ArrayList<Email> inBox = new ArrayList<Email>();
+    private ArrayList<Email> sentBox = new ArrayList<Email>();
 
     
 

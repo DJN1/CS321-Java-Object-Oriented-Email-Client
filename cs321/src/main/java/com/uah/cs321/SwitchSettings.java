@@ -96,7 +96,7 @@ public class SwitchSettings
         String panelText = "Current Site: " + currentSite + "\n" + "\n" + "Sites";
         Object[] siteList = email.siteList.toArray();
 
-        String siteToSwitchTo = (String)JOptionPane.showInputDialog(frame, panelText, "Switch Site", JOptionPane.PLAIN_MESSAGE,
+        Site siteToSwitchTo = (Site)JOptionPane.showInputDialog(frame, panelText, "Switch Site", JOptionPane.PLAIN_MESSAGE,
             null, siteList, siteList[0]);
         
         if (siteToSwitchTo == null)

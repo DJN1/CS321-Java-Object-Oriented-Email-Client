@@ -59,7 +59,7 @@ public class ManageSites
  
         Object[] buttonOptions = {"Delete", "Cancel"};
 
-        String siteToDelete = (String)JOptionPane.showInputDialog(frame, "Sites", "Remove a Site?", JOptionPane.YES_OPTION,
+        Site siteToDelete = (Site)JOptionPane.showInputDialog(frame, "Sites", "Remove a Site?", JOptionPane.YES_OPTION,
             null, siteList, buttonOptions);
         
         if (siteToDelete == null)
@@ -110,6 +110,8 @@ public class ManageSites
         
         String siteToAdd = JOptionPane.showInputDialog(frame, "Enter Site to Add", "Add Site", JOptionPane.PLAIN_MESSAGE);
         
+        Site newSite = new Site(siteToAdd, "com");
+        
         if (siteToAdd == null)
         {
             //System.out.print("No sites have been added.\n");
@@ -118,7 +120,7 @@ public class ManageSites
                 
         if (!siteToAdd.isBlank())
         {
-            email.AddSite(siteToAdd);
+            email.AddSite(newSite);
             JOptionPane.showMessageDialog(frame, "Site successfully added!", "Success", JOptionPane.DEFAULT_OPTION);
         }
         else

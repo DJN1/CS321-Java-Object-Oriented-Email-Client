@@ -19,6 +19,10 @@ public class Site {
         domainSuffix = suffix;
     }
     
+    public String toString(){
+        return name;
+    }
+    
     
     public void AddUser(User user){
         userList.add(user);
@@ -30,6 +34,10 @@ public class Site {
     
     public void SelectUser(User user){
         activeUser = user;
+    }
+    
+    public String GetName(){
+        return name;
     }
     
     
