@@ -59,7 +59,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         composeEmailButton.setBackground(new java.awt.Color(153, 204, 255));
         composeEmailButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        composeEmailButton.setForeground(new java.awt.Color(0, 0, 0));
         composeEmailButton.setText("Compose Email");
         composeEmailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +71,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         inboxButton.setBackground(new java.awt.Color(153, 204, 255));
         inboxButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        inboxButton.setForeground(new java.awt.Color(0, 0, 0));
         inboxButton.setText("Inbox");
         inboxButton.setToolTipText("");
         inboxButton.setMaximumSize(new java.awt.Dimension(72, 22));
@@ -85,7 +83,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         sentButton.setBackground(new java.awt.Color(153, 204, 255));
-        sentButton.setForeground(new java.awt.Color(0, 0, 0));
         sentButton.setText("Sent");
         sentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +91,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         trashButton.setBackground(new java.awt.Color(153, 204, 255));
-        trashButton.setForeground(new java.awt.Color(0, 0, 0));
         trashButton.setText("Trash");
         trashButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +102,6 @@ public class MainFrame extends javax.swing.JFrame {
         settingsLabel.setText("Settings");
 
         manageSitesButton.setBackground(new java.awt.Color(153, 204, 255));
-        manageSitesButton.setForeground(new java.awt.Color(0, 0, 0));
         manageSitesButton.setText("Manage Sites");
         manageSitesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +110,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         manageUsersButton.setBackground(new java.awt.Color(153, 204, 255));
-        manageUsersButton.setForeground(new java.awt.Color(0, 0, 0));
         manageUsersButton.setText("Manage Users");
         manageUsersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +118,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         switchUserSiteButton.setBackground(new java.awt.Color(153, 204, 255));
-        switchUserSiteButton.setForeground(new java.awt.Color(0, 0, 0));
         switchUserSiteButton.setText("<html>&nbsp Switch <br> User/Site </html>");
         switchUserSiteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
         inboxLabel.setText("Inbox");
 
         accountLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        accountLabel.setText("sample@test.com");
+        accountLabel.setText("No Site/User Selected");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,7 +190,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(trashButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageSitesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageUsersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(inboxLabel)
@@ -310,6 +303,11 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void AddItemToList(String item, DefaultListModel model){  
         model.addElement(item);
+    }
+    
+    public void UpdateActiveUserText(){
+        Site activeSite = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite);
     }
     
     

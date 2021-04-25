@@ -54,7 +54,7 @@
                   <Component id="manageSitesButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="manageUsersButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="inboxLabel" min="-2" max="-2" attributes="0"/>
@@ -299,7 +299,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="sample@test.com"/>
+        <Property name="text" type="java.lang.String" value="No Site/User Selected"/>
       </Properties>
     </Component>
   </SubComponents>

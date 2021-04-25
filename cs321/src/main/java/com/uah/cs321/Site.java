@@ -49,6 +49,10 @@ public class Site {
 	public String GetFullName() {
 		return fullName;
 	}
+        
+        public User GetCurrentUser(){
+            return activeUser;
+        }
 
 	public ArrayList<User> getUserList() {
 		return userList;

@@ -58,4 +58,8 @@ public class SimpleEmail {
 	public ArrayList<Site> getAllSites() {
 		return this.siteList;
 	}
+        
+        public Site GetCurrentSite(){
+            return this.currentSite;
+        }
 }

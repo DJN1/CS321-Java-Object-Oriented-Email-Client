@@ -46,15 +46,23 @@ public class ManageUsers
     private static void DeleteUser(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        
+        Site site = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        if(site==null){
+            JOptionPane.showConfirmDialog(frame, "You must select a site first.", "Warning", JOptionPane.DEFAULT_OPTION);
+            return;        
+        }
+        if(site.getUserList().isEmpty()){
+            JOptionPane.showConfirmDialog(frame, "No users found.", "Warning", JOptionPane.DEFAULT_OPTION);
+            return;
+        }
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        Object[] userList = {"--Select a User to Remove--", "User 1", "User 2", "User 3", "User 4", "User 5"};
+        Object[] userList = site.getUserList().toArray();
         Object[] buttonOptions = {"Delete", "Cancel"};
 
-        String userToDelete = (String)JOptionPane.showInputDialog(frame, "Users", "Remove a User?", JOptionPane.YES_OPTION,
+        User userToDelete = (User)JOptionPane.showInputDialog(frame, "Users", "Remove a User?", JOptionPane.YES_OPTION,
             null, userList, buttonOptions);
         
         if (userToDelete == null)
@@ -65,13 +73,13 @@ public class ManageUsers
         
         int result = 2;
         
-        if (!userToDelete.equals(userList[0]))
-        {
-            result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete the user: " + userToDelete + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        }
+
+        result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete the user: " + userToDelete + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        
         
         if (result == 0)
         {
+            site.RemoveUser(userToDelete);
             JOptionPane.showMessageDialog(frame, "User successfully deleted.", "Successful delete", JOptionPane.DEFAULT_OPTION);
             //System.out.print(userToDelete);
             //return userToDelete;
@@ -97,6 +105,11 @@ public class ManageUsers
     private static void AddUser(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
+        Site site = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        if(site==null){
+            JOptionPane.showConfirmDialog(frame, "You must select a site first.", "Warning", JOptionPane.DEFAULT_OPTION);
+            return;        
+        }
         
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
@@ -112,6 +125,7 @@ public class ManageUsers
                 
         if (!userToAdd.isBlank())
         {
+            User user = new User(userToAdd, site);
             JOptionPane.showMessageDialog(frame, "User successfully added!", "Success", JOptionPane.DEFAULT_OPTION);
         }
         else

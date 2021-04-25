@@ -10,11 +10,11 @@ package com.uah.cs321;
  * @author colin
  */
 public class Main {
+    public static MainFrame testFrame = new MainFrame();
 
     public static void main(String[] args){
 
         //Opening GUI
-        MainFrame testFrame = new MainFrame();
         testFrame.openWindow();
     }
 

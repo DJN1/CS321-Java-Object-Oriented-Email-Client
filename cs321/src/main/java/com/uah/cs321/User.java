@@ -13,16 +13,20 @@ public class User {
 
 	private final String userName;
 	private final String emailAddress;
-	private final String siteName;
+	private final Site site;
 	private final Mailboxes userMailbox;
 
-	public User(String aUserName, String aSiteName) {
+	public User(String aUserName, Site site) {
 		this.userName = aUserName;
-		this.siteName = aSiteName;
-		this.emailAddress = this.userName + "@" + this.siteName;
+		this.site = site;
+		this.emailAddress = this.userName + "@" + this.site;
 		this.userMailbox = new Mailboxes(this.emailAddress);
 	}
 
+        
+        public String toString(){
+            return userName;
+        }
 	public String getUserName() {
 		return this.userName;
 	}
@@ -32,7 +36,7 @@ public class User {
 	}
 
 	public String getSiteName() {
-		return this.siteName;
+		return this.site.toString();
 	}
 
 	public Mailboxes getUserMailbox() {
