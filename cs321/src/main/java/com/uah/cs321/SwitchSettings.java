@@ -71,7 +71,6 @@ public class SwitchSettings
         
         if (userToSwitchTo == null)
         {
-            //System.out.print("No users have been selected.\n");
             return; //null;
         }
         
