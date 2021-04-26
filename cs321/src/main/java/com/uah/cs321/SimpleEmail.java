@@ -21,10 +21,10 @@ public class SimpleEmail {
 	private SimpleEmail email;
 
 	private SimpleEmail() {
-            siteList = new ArrayList<Site>();
+            siteList = new ArrayList<>();
 	}
 
-	public static SimpleEmail SimpleEmailInstance() {
+	public static SimpleEmail getInstance() {
 		if (simpleEmailInstance == null) {
 			simpleEmailInstance = new SimpleEmail();
 		}

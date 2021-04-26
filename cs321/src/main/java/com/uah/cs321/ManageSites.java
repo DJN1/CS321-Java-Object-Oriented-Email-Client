@@ -49,7 +49,7 @@ public class ManageSites
     private static void DeleteSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        SimpleEmail email = SimpleEmail.SimpleEmailInstance();
+        SimpleEmail email = SimpleEmail.getInstance();
         
         if(email.getAllSites().isEmpty()){
             JOptionPane.showConfirmDialog(frame, "No sites found.", "Warning", JOptionPane.DEFAULT_OPTION);
@@ -110,7 +110,7 @@ public class ManageSites
     private static void AddSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        SimpleEmail email = SimpleEmail.SimpleEmailInstance();
+        SimpleEmail email = SimpleEmail.getInstance();
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

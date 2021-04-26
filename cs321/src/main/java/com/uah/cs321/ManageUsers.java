@@ -46,7 +46,7 @@ public class ManageUsers
     private static void DeleteUser(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        Site site = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        Site site = SimpleEmail.getInstance().GetCurrentSite();
         if(site==null){
             JOptionPane.showConfirmDialog(frame, "You must select a site first.", "Warning", JOptionPane.DEFAULT_OPTION);
             return;        
@@ -105,7 +105,7 @@ public class ManageUsers
     private static void AddUser(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        Site site = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        Site site = SimpleEmail.getInstance().GetCurrentSite();
         if(site==null){
             JOptionPane.showConfirmDialog(frame, "You must select a site first.", "Warning", JOptionPane.DEFAULT_OPTION);
             return;        

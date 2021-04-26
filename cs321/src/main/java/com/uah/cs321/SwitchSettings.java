@@ -50,7 +50,7 @@ public class SwitchSettings
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        Site site = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
+        Site site = SimpleEmail.getInstance().GetCurrentSite();
         if(site==null){
             JOptionPane.showConfirmDialog(frame, "You must select a site first.", "Warning", JOptionPane.DEFAULT_OPTION);
             return;
@@ -102,7 +102,7 @@ public class SwitchSettings
     private static void SwitchSite(JFrame relativeWindow)
     {
         JFrame frame = new JFrame();
-        SimpleEmail email = SimpleEmail.SimpleEmailInstance();
+        SimpleEmail email = SimpleEmail.getInstance();
 
         frame.setSize(200, 200);
         frame.setLocationRelativeTo(relativeWindow);

@@ -17,6 +17,7 @@ public class ComposeEmailDialog extends javax.swing.JDialog {
 	public ComposeEmailDialog(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
+                this.setLocationRelativeTo(null);
 	}
 
 	/**
