@@ -21,7 +21,7 @@ public class SimpleEmail {
 	private SimpleEmail email;
 
 	private SimpleEmail() {
-		var siteList = new ArrayList<>();
+            siteList = new ArrayList<Site>();
 	}
 
 	public static SimpleEmail SimpleEmailInstance() {
