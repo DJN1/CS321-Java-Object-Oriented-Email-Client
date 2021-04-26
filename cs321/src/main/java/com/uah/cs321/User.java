@@ -19,7 +19,7 @@ public class User {
 	public User(String aUserName, Site site) {
 		this.userName = aUserName;
 		this.site = site;
-		this.emailAddress = this.userName + "@" + this.site;
+		this.emailAddress = this.userName + "@" + this.site.GetFullName();
 		this.userMailbox = new Mailboxes(this.emailAddress);
 	}
 

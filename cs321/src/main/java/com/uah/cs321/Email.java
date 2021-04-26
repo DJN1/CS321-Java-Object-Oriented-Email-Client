@@ -19,11 +19,11 @@ public class Email {
 	private final String recipientName;
 	private final String senderName;
 
-	public Email(String aSubject, String aBody, String aReceiver, String aSender) {
+	public Email(String aSubject, String aBody, String aRecipient, String aSender) {
 		this.subject = aSubject;
 		this.body = aBody;
 		this.timeStamp = new Date();
-		this.recipientName = aReceiver;
+		this.recipientName = aRecipient;
 		this.senderName = aSender;
 	}
 

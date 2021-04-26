@@ -5,6 +5,8 @@
  */
 package com.uah.cs321;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author David
@@ -29,36 +31,36 @@ public class ComposeEmailDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        recipientTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        subjectTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        bodyTextArea = new javax.swing.JTextArea();
+        sendEmailButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Compose Email");
         setPreferredSize(new java.awt.Dimension(720, 480));
         setSize(new java.awt.Dimension(720, 480));
 
-        jTextField1.setToolTipText("Recipient of the Email");
+        recipientTextField.setToolTipText("Recipient of the Email");
 
         jLabel1.setText("Recipient:");
 
-        jTextField2.setToolTipText("Recipient of the Email");
+        subjectTextField.setToolTipText("Recipient of the Email");
 
         jLabel2.setText("Subject:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        bodyTextArea.setColumns(20);
+        bodyTextArea.setRows(5);
+        jScrollPane1.setViewportView(bodyTextArea);
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 0));
-        jButton1.setText("Send Email");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendEmailButton.setBackground(new java.awt.Color(0, 255, 0));
+        sendEmailButton.setText("Send Email");
+        sendEmailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sendEmailButtonActionPerformed(evt);
             }
         });
 
@@ -75,12 +77,12 @@ public class ComposeEmailDialog extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)))
+                            .addComponent(subjectTextField)
+                            .addComponent(recipientTextField)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(sendEmailButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -88,34 +90,76 @@ public class ComposeEmailDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipientTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(sendEmailButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEmailButtonActionPerformed
                 // TODO add your handling code here:
-		dispose();
-        }//GEN-LAST:event_jButton1ActionPerformed
+                
+                var subject = subjectTextField.getText();
+                var recipient = recipientTextField.getText();
+                var body = bodyTextArea.getText();
+                var sender = SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser();
+                
+                if (!validateFields(subject))
+                {
+                    JOptionPane.showMessageDialog(this, "Subject is required.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  
+                }
+                else if (!validateFields(recipient))
+                {
+                    JOptionPane.showMessageDialog(this, "Recipient is required.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;                     
+                }
+                else if (!validateFields(body))
+                {
+                    JOptionPane.showMessageDialog(this, "Email body can not be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; 
+                }
+                else
+                {
+                    var newlyCreatedEmail = new Email(subject, body, recipient, sender.getEmailAddress());
+                    MailSender mailSender = new MailSender();
+                    
+                    if (!mailSender.sendMessage(sender, recipient, newlyCreatedEmail))
+                    {
+                        JOptionPane.showMessageDialog(this, "Email could not be sent.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;  
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Email sent!", "Success!", JOptionPane.PLAIN_MESSAGE);
+                    }
+                }
+               
+		this.dispose();
+        }//GEN-LAST:event_sendEmailButtonActionPerformed
 
+        private boolean validateFields(Object o)
+        {
+            return !o.equals("");
+        }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea bodyTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField recipientTextField;
+    private javax.swing.JButton sendEmailButton;
+    private javax.swing.JTextField subjectTextField;
     // End of variables declaration//GEN-END:variables
 }

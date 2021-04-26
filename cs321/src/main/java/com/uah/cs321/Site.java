@@ -22,7 +22,7 @@ public class Site {
 	Site(String nameConstructor, String suffix) {
 		name = nameConstructor;
 		domainSuffix = suffix;
-		fullName = name + domainSuffix;
+		fullName = name + "." + domainSuffix;
 		userList = new ArrayList<>();
 	}
 
