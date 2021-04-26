@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author David
+ * @author David, Zach
  */
 public class ComposeEmailDialog extends javax.swing.JDialog {
 

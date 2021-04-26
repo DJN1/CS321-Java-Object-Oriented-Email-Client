@@ -7,7 +7,7 @@ package com.uah.cs321;
 
 /**
  *
- * @author Zach
+ * @author Colin, Zach
  */
 public class User {
 

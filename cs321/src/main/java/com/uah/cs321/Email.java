@@ -9,7 +9,7 @@ import java.util.Date;
  */
 /**
  *
- * @author Zach
+ * @author David, Zach
  */
 public class Email {
 

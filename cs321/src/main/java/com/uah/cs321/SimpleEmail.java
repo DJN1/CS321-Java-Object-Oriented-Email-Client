@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Caleb
+ * @author Caleb, Zach
  */
 public class SimpleEmail {
 
