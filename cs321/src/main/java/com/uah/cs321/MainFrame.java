@@ -307,7 +307,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void UpdateActiveUserText(){
         Site activeSite = SimpleEmail.SimpleEmailInstance().GetCurrentSite();
-        accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite);
+        accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite.toString());
     }
     
     
