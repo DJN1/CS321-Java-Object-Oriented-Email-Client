@@ -119,6 +119,7 @@ public class ManageUsers
         
         if (userToAdd == null)
         {
+
             //System.out.print("No users have been added.\n");
             return; //null;
         }
@@ -126,6 +127,7 @@ public class ManageUsers
         if (!userToAdd.isBlank())
         {
             User user = new User(userToAdd, site);
+            site.AddUser(user);
             JOptionPane.showMessageDialog(frame, "User successfully added!", "Success", JOptionPane.DEFAULT_OPTION);
         }
         else

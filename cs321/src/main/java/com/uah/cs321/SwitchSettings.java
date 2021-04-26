@@ -63,7 +63,12 @@ public class SwitchSettings
         
         
         Object currentUser = site.GetCurrentUser();
-        String panelText = "Current user: " + currentUser + "\n" + "\n" + "Users";
+        String panelText;
+        if(currentUser!=null){
+            panelText = "Current User: " + currentUser + "\n" + "\n" + "Users";
+        }else{
+            panelText = "Current User: No User Selected" + "\n" + "\n" + "Users";
+        }
         Object[] userList = site.getUserList().toArray();
 
         User userToSwitchTo = (User)JOptionPane.showInputDialog(frame, panelText, "Switch User", JOptionPane.PLAIN_MESSAGE,
