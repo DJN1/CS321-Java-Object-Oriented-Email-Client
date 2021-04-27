@@ -53,13 +53,13 @@ public class EmailListItem extends javax.swing.JPanel {
 		});
 
 		jLabel2.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
-		jLabel2.setText(this.email.getRecipient());
+		jLabel2.setText(this.email.getSender());
 
 		jLabel3.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
 		jLabel3.setText(this.email.getTimeStamp().toString());
 
 		jLabel4.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
-		jLabel4.setText(this.email.getSender());
+		jLabel4.setText(this.email.getSubject());
 
 		javax.swing.GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
@@ -87,10 +87,10 @@ public class EmailListItem extends javax.swing.JPanel {
 	}
 
 	private void formMouseClicked(MouseEvent evt) {
-		new EmailView(null, true).setVisible(true);
+		new EmailView(null, true, this.email).setVisible(true);
 	}
 
-	private Email email;
+	private final Email email;
 	private JLabel jLabel1;
 	private JLabel jLabel2;
 	private JLabel jLabel3;
