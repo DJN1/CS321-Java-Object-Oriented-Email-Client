@@ -10,13 +10,15 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
+import javax.swing.JScrollPane;
 import java.util.ArrayList;
+import java.awt.Dimension;
 
 /**
  *
@@ -33,129 +35,36 @@ public class MainFrame extends JFrame {
 		this.emailItemList = new ArrayList<>();
 		this.createButtons();
 		this.createLabels();
-		this.initComponents();
-		this.emailListPanelLayout = new GroupLayout(emailListPanel);
+		this.addEmails();
+		this.addUI();
+//		this.initComponents();
 		this.setLocationRelativeTo(null);
 
 	}
 
-	@SuppressWarnings("unchecked")
-	private void initComponents() {
-		jScrollPane1 = new JScrollPane();
-		jScrollPane2 = new JScrollPane();
-		this.emailListPanel = new JPanel();
-
-		jScrollPane1.setBackground(new Color(187, 187, 187));
-
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-		emailListPanel.setBackground(new Color(153, 153, 153));
-		emailListPanel.setForeground(new Color(204, 204, 204));
-
-		emailListPanel.setLayout(emailListPanelLayout);
-//		emailListPanelLayout.setHorizontalGroup(
-//				emailListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//						.addGroup(emailListPanelLayout.createSequentialGroup()
-//								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//								.addGroup(emailListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//										.addComponent(emailListItem10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//										.addComponent(emailListItem17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//								.addContainerGap())
-//		);
-//		emailListPanelLayout.setVerticalGroup(
-//				emailListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//						.addGroup(emailListPanelLayout.createSequentialGroup()
-//								.addContainerGap()
-//								.addComponent(emailListItem10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//								.addComponent(emailListItem17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//		);
-
-		System.out.println("Pre layout");
-
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup()
-								.addGap(44, 44, 44)
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-										.addComponent(accountLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(switchUserSiteButton)
-										.addComponent(settingsLabel)
-										.addComponent(this.composeEmailButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(emailBoxesLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(inboxButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(sentButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(trashButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(manageSitesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(manageUsersButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-										.addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-												.addComponent(inboxLabel)
-												.addGap(483, 483, 483))
-										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-												.addComponent(emailListPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(30, 30, 30))))
-		);
-		layout.setVerticalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup()
-								.addGap(12, 12, 12)
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-										.addComponent(inboxLabel)
-										.addComponent(accountLabel))
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-										.addGroup(layout.createSequentialGroup()
-												.addComponent(this.composeEmailButton, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-												.addGap(62, 62, 62)
-												.addComponent(emailBoxesLabel)
-												.addGap(27, 27, 27)
-												.addComponent(inboxButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-												.addGap(18, 18, 18)
-												.addComponent(sentButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-												.addGap(18, 18, 18)
-												.addComponent(trashButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-												.addGap(94, 94, 94)
-												.addComponent(settingsLabel)
-												.addGap(18, 18, 18)
-												.addComponent(manageSitesButton)
-												.addGap(18, 18, 18)
-												.addComponent(manageUsersButton)
-												.addGap(46, 46, 46)
-												.addComponent(switchUserSiteButton, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
-										.addComponent(emailListPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-
-		pack();
-	}
-
+//	@SuppressWarnings("unchecked")
+//	private void initComponents() {
+//
+//	}
 	private void populateEmailList() {
 		this.emails.forEach(email -> {
 			this.emailItemList.add(new EmailListItem(email));
 		});
+		this.emailItemList.add(new EmailListItem(new Email("subject1", "body1", "rec1", "sender1")));
+		this.emailItemList.add(new EmailListItem(new Email("subject2", "body2", "rec2", "sender2")));
+		this.emailItemList.add(new EmailListItem(new Email("subject3", "body3", "rec3", "sender3")));
+		this.emailItemList.add(new EmailListItem(new Email("subject4", "body4", "rec4", "sender4")));
+		this.emailItemList.add(new EmailListItem(new Email("subject5", "body5", "rec5", "sender5")));
+		this.emailItemList.add(new EmailListItem(new Email("subject6", "body6", "rec6", "sender6")));
+		this.emailItemList.add(new EmailListItem(new Email("subject7", "body7", "rec7", "sender7")));
+		this.emailItemList.add(new EmailListItem(new Email("subject8", "body8", "rec8", "sender8")));
+		this.emailItemList.add(new EmailListItem(new Email("subject9", "body9", "rec9", "sender9")));
+		this.emailItemList.add(new EmailListItem(new Email("subject10", "body10", "rec10", "sender10")));
+		this.emailItemList.add(new EmailListItem(new Email("subject11", "body11", "rec11", "sender11")));
+		this.emailItemList.add(new EmailListItem(new Email("subject12", "body12", "rec12", "sender12")));
+		this.emailItemList.add(new EmailListItem(new Email("subject13", "body13", "rec13", "sender13")));
+		this.emailItemList.add(new EmailListItem(new Email("subject14", "body14", "rec14", "sender14")));
+
 	}
 
 	private void getEmails(MailBoxType mailBoxType) {
@@ -176,7 +85,112 @@ public class MainFrame extends JFrame {
 	}
 
 	private void addEmails() {
+		this.populateEmailList();
 
+		this.emailListPanel = new JPanel();
+		this.emailListPanelLayout = new GroupLayout(emailListPanel);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		emailListPanel.setBackground(new Color(153, 153, 153));
+		emailListPanel.setForeground(new Color(204, 204, 204));
+
+		emailListPanel.setLayout(emailListPanelLayout);
+		GroupLayout.ParallelGroup horizontalParGroup = emailListPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
+		GroupLayout.SequentialGroup horizontalSeqGroup = emailListPanelLayout.createSequentialGroup();
+
+		GroupLayout.ParallelGroup verticalParGroup = emailListPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
+		GroupLayout.SequentialGroup verticalSeqGroup = emailListPanelLayout.createSequentialGroup();
+
+		horizontalSeqGroup.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+
+		GroupLayout.ParallelGroup emailGroup = emailListPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
+
+		verticalSeqGroup.addContainerGap();
+
+		for (int i = 0; i < this.emailItemList.size(); i++) {
+			emailGroup.addComponent(emailItemList.get(i), GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
+			verticalSeqGroup.addComponent(this.emailItemList.get(i), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
+			if (i != this.emailItemList.size() - 1) {
+				verticalSeqGroup.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED);
+			}
+		}
+
+		verticalSeqGroup.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+		verticalParGroup.addGroup(verticalSeqGroup);
+		this.emailListPanelLayout.setVerticalGroup(verticalParGroup);
+
+		horizontalSeqGroup.addGroup(emailGroup);
+		horizontalSeqGroup.addContainerGap();
+		horizontalParGroup.addGroup(horizontalSeqGroup);
+		this.emailListPanelLayout.setHorizontalGroup(horizontalParGroup);
+
+		this.emailListScrollPane = new JScrollPane(this.emailListPanel);
+		this.emailListPanel.setAutoscrolls(true);
+		this.emailListScrollPane.setPreferredSize(new Dimension(1000, 640));
+	}
+
+	private void addUI() {
+		GroupLayout layout = new GroupLayout(this.getContentPane());
+
+		this.getContentPane().setLayout(layout);
+
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+								.addGap(44, 44, 44)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+										.addComponent(this.accountLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.switchUserSiteButton)
+										.addComponent(this.settingsLabel)
+										.addComponent(this.composeEmailButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.emailBoxesLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.inboxButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.sentButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.trashButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.manageSitesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(this.manageUsersButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+												.addComponent(this.inboxLabel)
+												.addGap(483, 483, 483))
+										.addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+												.addComponent(this.emailListScrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addGap(30, 30, 30))))
+		);
+
+		layout.setVerticalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+								.addGap(12, 12, 12)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+										.addComponent(this.inboxLabel)
+										.addComponent(this.accountLabel))
+								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+										.addGroup(layout.createSequentialGroup()
+												.addComponent(this.composeEmailButton, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+												.addGap(62, 62, 62)
+												.addComponent(this.emailBoxesLabel)
+												.addGap(27, 27, 27)
+												.addComponent(this.inboxButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+												.addGap(18, 18, 18)
+												.addComponent(this.sentButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+												.addGap(18, 18, 18)
+												.addComponent(this.trashButton, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+												.addGap(94, 94, 94)
+												.addComponent(this.settingsLabel)
+												.addGap(18, 18, 18)
+												.addComponent(this.manageSitesButton)
+												.addGap(18, 18, 18)
+												.addComponent(this.manageUsersButton)
+												.addGap(46, 46, 46)
+												.addComponent(this.switchUserSiteButton, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
+										.addComponent(this.emailListScrollPane, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+
+		this.pack();
 	}
 
 	private void createButtons() {
@@ -327,20 +341,10 @@ public class MainFrame extends JFrame {
 	private JLabel accountLabel;
 	private JButton composeEmailButton;
 	private JLabel emailBoxesLabel;
-	private EmailListItem emailListItem1;
-	private EmailListItem emailListItem10;
-	private EmailListItem emailListItem11;
-	private EmailListItem emailListItem12;
-	private EmailListItem emailListItem13;
-	private EmailListItem emailListItem14;
-	private EmailListItem emailListItem15;
-	private EmailListItem emailListItem16;
-	private EmailListItem emailListItem17;
 	private JPanel emailListPanel;
+	private JScrollPane emailListScrollPane;
 	private JButton inboxButton;
 	private JLabel inboxLabel;
-	private JScrollPane jScrollPane1;
-	private JScrollPane jScrollPane2;
 	private JButton manageSitesButton;
 	private JButton manageUsersButton;
 	private JButton sentButton;
