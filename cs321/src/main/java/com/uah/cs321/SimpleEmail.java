@@ -21,7 +21,7 @@ public class SimpleEmail {
 	private SimpleEmail email;
 
 	private SimpleEmail() {
-            siteList = new ArrayList<>();
+		siteList = new ArrayList<>();
 	}
 
 	public static SimpleEmail getInstance() {
@@ -58,8 +58,8 @@ public class SimpleEmail {
 	public ArrayList<Site> getAllSites() {
 		return this.siteList;
 	}
-        
-        public Site GetCurrentSite(){
-            return this.currentSite;
-        }
+
+	public Site GetCurrentSite() {
+		return this.currentSite;
+	}
 }
