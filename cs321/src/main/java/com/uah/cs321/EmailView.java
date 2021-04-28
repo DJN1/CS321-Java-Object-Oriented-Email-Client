@@ -1,6 +1,17 @@
 package com.uah.cs321;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -11,12 +22,15 @@ public class EmailView extends javax.swing.JDialog {
 	/**
 	 * Creates new form EmailView
 	 *
-	 * @param parent
-	 * @param modal
+	 * @param parent parent
+	 * @param modal is modal
+	 * @param email email to display
+	 * @param currentMailBoxType current mailbox type
 	 */
-	public EmailView(Frame parent, boolean modal, Email email) {
+	public EmailView(Frame parent, boolean modal, Email email, MailBoxType currentMailBoxType) {
 		super(parent, modal);
 		this.email = email;
+		this.currentMailBoxType = currentMailBoxType;
 		initComponents();
 		this.setLocationRelativeTo(null);
 	}
@@ -29,80 +43,102 @@ public class EmailView extends javax.swing.JDialog {
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jTextArea1 = new javax.swing.JTextArea();
-		jTextField1 = new javax.swing.JTextField();
-		jTextField2 = new javax.swing.JTextField();
+		this.senderFieldLabel = new JLabel();
+		this.subjectFieldLabel = new JLabel();
+		this.bodyScrollContainer = new JScrollPane();
+		this.bodyField = new JTextArea();
+		this.senderField = new JTextField();
+		this.subjectField = new JTextField();
+		this.deleteButton = new JButton();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		setTitle("View Email");
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		this.setTitle("View Email");
 
-		jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-		jLabel1.setText("From:");
+		this.senderFieldLabel.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+		this.senderFieldLabel.setText("From:");
 
-		jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-		jLabel2.setText("Subject:");
+		this.subjectFieldLabel.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+		this.subjectFieldLabel.setText("Subject:");
 
-		jTextArea1.setEditable(false);
-		jTextArea1.setColumns(20);
-		jTextArea1.setRows(5);
-		jTextArea1.setText(this.email.getBody());
-		jScrollPane1.setViewportView(jTextArea1);
+		this.bodyField.setEditable(false);
+		this.bodyField.setColumns(20);
+		this.bodyField.setRows(5);
+		this.bodyField.setText(this.email.getBody());
+		this.bodyScrollContainer.setViewportView(bodyField);
 
-		jTextField1.setEditable(false);
-		jTextField1.setText(this.email.getSender());
+		this.senderField.setEditable(false);
+		this.senderField.setText(this.email.getSender().getEmailAddress());
 
-		jTextField2.setEditable(false);
-		jTextField2.setText(this.email.getSubject());
+		this.subjectField.setEditable(false);
+		this.subjectField.setText(this.email.getSubject());
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
+		this.deleteButton.setBackground(new Color(255, 0, 0));
+		this.deleteButton.setText("Delete");
+		this.deleteButton.addActionListener((ActionEvent evt) -> {
+			sendDeleteButtonActionPerformed(evt);
+		});
+
+		GroupLayout layout = new GroupLayout(getContentPane());
+		this.getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
 								.addContainerGap()
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 										.addGroup(layout.createSequentialGroup()
-												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-														.addComponent(jLabel2)
-														.addComponent(jLabel1))
+												.addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+														.addComponent(subjectFieldLabel)
+														.addComponent(senderFieldLabel))
 												.addGap(18, 18, 18)
-												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addComponent(jTextField1)
-														.addComponent(jTextField2)))
-										.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE))
+												.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+														.addComponent(senderField)
+														.addComponent(subjectField)))
+										.addComponent(bodyScrollContainer, GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE).addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+										.addGap(0, 0, Short.MAX_VALUE).addComponent(this.deleteButton)
+								))
 								.addContainerGap())
 		);
 		layout.setVerticalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
 								.addContainerGap()
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(jLabel1)
-										.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+										.addComponent(senderFieldLabel)
+										.addComponent(senderField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-										.addComponent(jLabel2)
-										.addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+										.addComponent(subjectFieldLabel)
+										.addComponent(subjectField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+								.addComponent(bodyScrollContainer, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.deleteButton)
 								.addContainerGap())
 		);
 
 		pack();
 	}
 
+	private void sendDeleteButtonActionPerformed(ActionEvent evt) {
+		System.out.println("clicked delete to delete this email");
+		if (this.currentMailBoxType == MailBoxType.TRASH) {
+			SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().deleteEmailFromTrash(this.email);
+		} else {
+			SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().sendEmailToTrash(this.email, this.currentMailBoxType);
+		}
+
+	}
+
 	public void setBody(String text) {
-		this.jTextArea1.setText(text);
+		this.bodyField.setText(text);
 	}
 
 	private final Email email;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTextArea jTextArea1;
-	private javax.swing.JTextField jTextField1;
-	private javax.swing.JTextField jTextField2;
+	private final MailBoxType currentMailBoxType;
+	private JButton deleteButton;
+	private JLabel senderFieldLabel;
+	private JLabel subjectFieldLabel;
+	private JScrollPane bodyScrollContainer;
+	private JTextArea bodyField;
+	private JTextField senderField;
+	private JTextField subjectField;
 }
