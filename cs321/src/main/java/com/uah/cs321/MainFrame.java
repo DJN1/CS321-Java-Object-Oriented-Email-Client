@@ -5,20 +5,20 @@
  */
 package com.uah.cs321;
 
-import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 import javax.swing.JScrollPane;
-import java.util.ArrayList;
-import java.awt.Dimension;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -31,46 +31,23 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		this.emails = new ArrayList<>();
-		this.getEmails(MailBoxType.INBOX);
+		this.currentMailBoxType = MailBoxType.INBOX;
 		this.emailItemList = new ArrayList<>();
-		this.createButtons();
-		this.createLabels();
-		this.addEmails();
-		this.addUI();
-//		this.initComponents();
-		this.setLocationRelativeTo(null);
+		this.updateUI();
 
 	}
 
-//	@SuppressWarnings("unchecked")
-//	private void initComponents() {
-//
-//	}
 	private void populateEmailList() {
 		this.emails.forEach(email -> {
-			this.emailItemList.add(new EmailListItem(email));
+			this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
 		});
-		this.emailItemList.add(new EmailListItem(new Email("subject1", "body1", "rec1", "sender1")));
-		this.emailItemList.add(new EmailListItem(new Email("subject2", "body2", "rec2", "sender2")));
-		this.emailItemList.add(new EmailListItem(new Email("subject3", "body3", "rec3", "sender3")));
-		this.emailItemList.add(new EmailListItem(new Email("subject4", "body4", "rec4", "sender4")));
-		this.emailItemList.add(new EmailListItem(new Email("subject5", "body5", "rec5", "sender5")));
-		this.emailItemList.add(new EmailListItem(new Email("subject6", "body6", "rec6", "sender6")));
-		this.emailItemList.add(new EmailListItem(new Email("subject7", "body7", "rec7", "sender7")));
-		this.emailItemList.add(new EmailListItem(new Email("subject8", "body8", "rec8", "sender8")));
-		this.emailItemList.add(new EmailListItem(new Email("subject9", "body9", "rec9", "sender9")));
-		this.emailItemList.add(new EmailListItem(new Email("subject10", "body10", "rec10", "sender10")));
-		this.emailItemList.add(new EmailListItem(new Email("subject11", "body11", "rec11", "sender11")));
-		this.emailItemList.add(new EmailListItem(new Email("subject12", "body12", "rec12", "sender12")));
-		this.emailItemList.add(new EmailListItem(new Email("subject13", "body13", "rec13", "sender13")));
-		this.emailItemList.add(new EmailListItem(new Email("subject14", "body14", "rec14", "sender14")));
 
 	}
 
-	private void getEmails(MailBoxType mailBoxType) {
+	private void getEmails() {
 		this.emails.clear();
 		if (SimpleEmail.getInstance().GetCurrentSite() != null) {
-			switch (mailBoxType) {
+			switch (this.currentMailBoxType) {
 				case INBOX:
 					this.emails = SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().getInbox();
 					break;
@@ -106,7 +83,6 @@ public class MainFrame extends JFrame {
 		GroupLayout.ParallelGroup emailGroup = emailListPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
 
 		verticalSeqGroup.addContainerGap();
-
 		for (int i = 0; i < this.emailItemList.size(); i++) {
 			emailGroup.addComponent(emailItemList.get(i), GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
 			verticalSeqGroup.addComponent(this.emailItemList.get(i), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
@@ -129,7 +105,7 @@ public class MainFrame extends JFrame {
 		this.emailListScrollPane.setPreferredSize(new Dimension(1000, 640));
 	}
 
-	private void addUI() {
+	private void addUIElements() {
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 
 		this.getContentPane().setLayout(layout);
@@ -269,20 +245,41 @@ public class MainFrame extends JFrame {
 		this.accountLabel.setText("No Site/User Selected");
 	}
 
+	private void updateUI() {
+		this.getEmails();
+		System.out.println("number of emails: " + (this.emails.size() - 1));
+		this.createButtons();
+		System.out.println("created buttons");
+		this.createLabels();
+		System.out.println("created labels");
+		this.addEmails();
+		System.out.println("added emails");
+		this.addUIElements();
+		System.out.println("added ui elements");
+//		this.repaint();
+		this.setLocationRelativeTo(null);
+	}
+
 	private void composeEmailButtonActionPerformed(ActionEvent evt) {
-		new ComposeEmailDialog(this, rootPaneCheckingEnabled).setVisible(true);
+		new ComposeEmailDialog(this, this.rootPaneCheckingEnabled).setVisible(true);
 	}
 
 	private void inboxButtonActionPerformed(ActionEvent evt) {
-		inboxLabel.setText("Inbox");
+		this.currentMailBoxType = MailBoxType.INBOX;
+		this.getEmails();
+		this.inboxLabel.setText("Inbox");
 	}
 
 	private void sentButtonActionPerformed(ActionEvent evt) {
-		inboxLabel.setText("Sent");
+		this.currentMailBoxType = MailBoxType.SENT;
+		this.getEmails();
+		this.inboxLabel.setText("Sent");
 	}
 
 	private void trashButtonActionPerformed(ActionEvent evt) {
-		inboxLabel.setText("Trash");
+		this.currentMailBoxType = MailBoxType.TRASH;
+		this.getEmails();
+		this.inboxLabel.setText("Trash");
 	}
 
 	private void manageSitesButtonActionPerformed(ActionEvent evt) {
@@ -333,11 +330,11 @@ public class MainFrame extends JFrame {
 
 	public void UpdateActiveUserText() {
 		Site activeSite = SimpleEmail.getInstance().GetCurrentSite();
-		accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite.toString());
+		this.accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite.toString());
 	}
 
 	private ArrayList<Email> emails;
-	private ArrayList<EmailListItem> emailItemList;
+	private final ArrayList<EmailListItem> emailItemList;
 	private JLabel accountLabel;
 	private JButton composeEmailButton;
 	private JLabel emailBoxesLabel;
@@ -351,6 +348,6 @@ public class MainFrame extends JFrame {
 	private JLabel settingsLabel;
 	private JButton switchUserSiteButton;
 	private JButton trashButton;
-	private DefaultListModel model;
 	private GroupLayout emailListPanelLayout;
+	private MailBoxType currentMailBoxType;
 }
