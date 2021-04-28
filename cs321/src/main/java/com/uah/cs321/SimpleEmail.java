@@ -15,8 +15,7 @@ public class SimpleEmail {
 
 	private static SimpleEmail simpleEmailInstance = null;
 
-	private ArrayList<Site> siteList;
-	private Site site;
+	private final ArrayList<Site> siteList;
 	private Site currentSite;
 	private SimpleEmail email;
 
@@ -32,17 +31,9 @@ public class SimpleEmail {
 		return simpleEmailInstance;
 	}
 
-	public SimpleEmail getEmail() {
-		if (email == null) {
-			email = new SimpleEmail();
-		}
-		return email;
-	}
-
 	public void AddSite(Site site) {
 		siteList.add(site);
 		System.out.println("The site " + site.GetName() + " was added");
-
 	}
 
 	public void RemoveSite(Site site) {
