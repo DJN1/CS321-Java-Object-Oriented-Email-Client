@@ -81,13 +81,10 @@ public class SwitchSettings {
 		if (result == 0) {
 			site.SelectUser(userToSwitchTo);
 			JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
-			//System.out.print(userToSwitchTo);
-			//return userToDelete;
+                        Main.simpleEmailFrame.UpdateActiveUserText();
+                        //Main.simpleEmailFrame.updateUI();
+
 		}
-//        else
-//        {
-//            System.out.print("No users have been selected.\n");
-//        }
 	}
 
 	// Displays current user and list of users, prompting the admin user to switch sites

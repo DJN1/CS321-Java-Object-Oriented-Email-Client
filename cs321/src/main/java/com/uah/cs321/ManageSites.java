@@ -6,7 +6,6 @@
 package com.uah.cs321;
 
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -23,7 +22,6 @@ public class ManageSites
         
         ms.setSize(400, 400);
         ms.setLocationRelativeTo(null);
-        //ms.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         JPanel mainPanel = new JPanel();
         
@@ -60,11 +58,8 @@ public class ManageSites
         frame.setLocationRelativeTo(relativeWindow);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        //String[] siteList = {"--Select a Site to Remove--", "Site 1", "Site 2", "Site 3", "Site 4", "Site 5"};
         Object[] siteList = email.getAllSites().toArray();
 
- 
- 
         Object[] buttonOptions = {"Delete", "Cancel"};
 
         Site siteToDelete = (Site)JOptionPane.showInputDialog(frame, "Sites", "Remove a Site?", JOptionPane.YES_OPTION,
@@ -72,7 +67,6 @@ public class ManageSites
         
         if (siteToDelete == null)
         {
-            //System.out.print("No sites have been deleted.\n");
             return; //null;
         }
         
@@ -86,24 +80,7 @@ public class ManageSites
         if (result == 0)
         {
             JOptionPane.showMessageDialog(frame, "Site successfully deleted.", "Successful delete", JOptionPane.DEFAULT_OPTION);
-            //System.out.print(siteToDelete);
-            //return siteToDelete;
         }
-//        else
-//        {
-//            System.out.print("No sites have been deleted.\n");
-//        }
-        
-//        return null;
-
-//        if (siteToDelete == null)
-//        {
-//            System.out.print("No sites have been deleted.\n");
-//        }
-//        else
-//        {
-//            System.out.print(siteToDelete);
-//        }
     }
     
     // Allows an admin user to add site
@@ -117,11 +94,17 @@ public class ManageSites
         
         String siteToAdd = JOptionPane.showInputDialog(frame, "Enter Site to Add", "Add Site", JOptionPane.PLAIN_MESSAGE);
         
-        Site newSite = new Site(siteToAdd, "com");
+        var suffix = siteToAdd.substring(siteToAdd.lastIndexOf(".") + 1);
+        
+        if(suffix != null)
+        {
+            siteToAdd = siteToAdd.replace("." + suffix, "");
+        }
+        
+        Site newSite = new Site(siteToAdd, suffix);
         
         if (siteToAdd == null)
         {
-            //System.out.print("No sites have been added.\n");
             return; //null;
         }
                 
@@ -134,14 +117,5 @@ public class ManageSites
         {
             JOptionPane.showMessageDialog(frame, "Site was not added!", "Site Add Failed!", JOptionPane.ERROR_MESSAGE);
         }
-        
-//        if (siteToAdd.isBlank())
-//        {
-//            System.out.print("No sites have been added.\n");
-//        }
-//        else
-//        {
-//            System.out.print(siteToAdd);
-//        }
     }
 }

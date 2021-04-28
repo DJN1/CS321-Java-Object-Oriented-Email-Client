@@ -17,7 +17,7 @@ public class Main {
 		Tester.test();
 
 		//Opening GUI
-		simpleEmailFrame.openWindow();
+		simpleEmailFrame.setVisible(true);
 	}
 
 }
