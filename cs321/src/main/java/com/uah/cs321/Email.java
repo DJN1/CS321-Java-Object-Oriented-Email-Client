@@ -17,9 +17,16 @@ public class Email {
 	private final String body;
 	private final Date timeStamp;
 	private final String recipientName;
-	private final String senderName;
+	private final User senderName;
 
-	public Email(String aSubject, String aBody, String aRecipient, String aSender) {
+	/**
+	 *
+	 * @param aSubject subject of email
+	 * @param aBody body of the email
+	 * @param aSender User that sends email
+	 * @param aRecipient email address of recipient
+	 */
+	public Email(String aSubject, String aBody, User aSender, String aRecipient) {
 		this.subject = aSubject;
 		this.body = aBody;
 		this.timeStamp = new Date();
@@ -43,7 +50,7 @@ public class Email {
 		return this.recipientName;
 	}
 
-	public String getSender() {
+	public User getSender() {
 		return this.senderName;
 	}
 }
