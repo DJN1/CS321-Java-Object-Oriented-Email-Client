@@ -48,12 +48,22 @@ public class Mailboxes {
 		return this.trashBox;
 	}
 
-	public void sendEmailToTrash(Email aEmail, ArrayList<Email> emailBox) {
-		var emailToMove = getEmailFromBox(aEmail, emailBox);
+	public void sendEmailToTrash(Email aEmail, MailBoxType inboxType) {
+		Email emailToMove;
+		if (inboxType == MailBoxType.INBOX) {
+			emailToMove = this.getEmailFromBox(aEmail, this.inbox);
+			this.trashBox.add(0, emailToMove);
+			this.removeEmailFromBox(aEmail, this.inbox);
 
-		this.trashBox.add(0, emailToMove);
+		} else {
+			emailToMove = this.getEmailFromBox(aEmail, this.sentBox);
+			this.trashBox.add(0, emailToMove);
+			this.removeEmailFromBox(aEmail, this.sentBox);
+		}
+//		emailToMove = getEmailFromBox(aEmail, emailBox);
 
-		removeEmailFromBox(aEmail, emailBox);
+//		this.trashBox.add(0, emailToMove);
+//		removeEmailFromBox(aEmail, emailBox);
 	}
 
 	public void deleteEmailFromTrash(Email aEmail) {
