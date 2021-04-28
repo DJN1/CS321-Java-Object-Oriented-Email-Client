@@ -55,6 +55,7 @@ public class MainFrame extends JFrame {
             this.settingsLabel = new JLabel();
             this.inboxLabel = new JLabel();
             this.accountLabel = new JLabel();
+            this.createLabels();
             this.updateUI();
 	}
 
@@ -84,6 +85,11 @@ public class MainFrame extends JFrame {
 
 	private void addEmails() {
 		this.populateEmailList();
+                
+                if(this.emailListPanel != null){
+                    this.emailListPanel.setVisible(false);
+                    this.emailListScrollPane.setVisible(false);
+                }
 
 		this.emailListPanel = new JPanel();
 		this.emailListPanelLayout = new GroupLayout(emailListPanel);
@@ -267,8 +273,6 @@ public class MainFrame extends JFrame {
 		System.out.println("number of emails: " + (this.emails.size() - 1));
 		this.createButtons();
 		System.out.println("created buttons");
-		this.createLabels();
-		System.out.println("created labels");
 		this.addEmails();
 		System.out.println("added emails");
 		this.addUIElements();

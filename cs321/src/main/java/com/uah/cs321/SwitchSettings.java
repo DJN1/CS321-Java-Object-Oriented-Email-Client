@@ -82,7 +82,7 @@ public class SwitchSettings {
 			site.SelectUser(userToSwitchTo);
 			JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
                         Main.simpleEmailFrame.UpdateActiveUserText();
-                        //Main.simpleEmailFrame.updateUI();
+                        Main.simpleEmailFrame.updateUI();
 
 		}
 	}
