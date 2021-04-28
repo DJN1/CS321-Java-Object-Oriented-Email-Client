@@ -61,14 +61,14 @@ public class MainFrame extends JFrame {
 	}
 
 	private void populateEmailList() {
-		this.emails.forEach(email -> {
-			this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
-		});
+            this.emailItemList.clear();
+            this.emails.forEach(email -> {
+                this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
+            });
 
 	}
 
 	private void getEmails() {
-		this.emails.clear();
 		if (SimpleEmail.getInstance().GetCurrentSite() != null) {
 			switch (this.currentMailBoxType) {
 				case INBOX:
@@ -85,8 +85,10 @@ public class MainFrame extends JFrame {
 	}
 
 	private void addEmails() {
+           
 		this.populateEmailList();
                 
+
                 if(this.emailListPanel != null){
                     this.emailListPanel.setVisible(false);
                     this.emailListScrollPane.setVisible(false);
@@ -273,7 +275,6 @@ public class MainFrame extends JFrame {
 		this.getEmails();
 		System.out.println("number of emails: " + (this.emails.size() - 1));
 		
-		System.out.println("created buttons");
 		this.addEmails();
 		System.out.println("added emails");
 		this.addUIElements();
@@ -288,19 +289,19 @@ public class MainFrame extends JFrame {
 
 	private void inboxButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.INBOX;
-		this.getEmails();
+                this.updateUI();
 		this.inboxLabel.setText("Inbox");
 	}
 
 	private void sentButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.SENT;
-		this.getEmails();
+		this.updateUI();
 		this.inboxLabel.setText("Sent");
 	}
 
 	private void trashButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.TRASH;
-		this.getEmails();
+		this.updateUI();
 		this.inboxLabel.setText("Trash");
 	}
 
