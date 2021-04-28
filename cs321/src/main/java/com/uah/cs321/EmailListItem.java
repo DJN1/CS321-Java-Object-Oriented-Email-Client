@@ -5,15 +5,14 @@
  */
 package com.uah.cs321;
 
-import java.util.Date;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
+import javax.swing.JLabel;
 import javax.swing.LayoutStyle;
-import java.awt.Font;
-import java.awt.Color;
 
 /**
  *
@@ -23,9 +22,13 @@ public class EmailListItem extends javax.swing.JPanel {
 
 	/**
 	 * Creates new form EmailListItem
+	 *
+	 * @param email email associated with tile
+	 * @param currentInboxType type of current Mailbox
 	 */
-	public EmailListItem(Email email) {
+	public EmailListItem(Email email, MailBoxType currentInboxType) {
 		this.email = email;
+		this.currentInboxType = currentInboxType;
 		initComponents();
 	}
 
@@ -37,12 +40,9 @@ public class EmailListItem extends javax.swing.JPanel {
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
-		jLabel1 = new JLabel();
-		jLabel2 = new JLabel();
-		jLabel3 = new JLabel();
-		jLabel4 = new JLabel();
-
-		jLabel1.setText("jLabel1");
+		senderEmailLabel = new JLabel();
+		timeStampLabel = new JLabel();
+		subjectLabel = new JLabel();
 
 		setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0, 0, 0)));
 		setPreferredSize(new Dimension(967, 64));
@@ -52,14 +52,14 @@ public class EmailListItem extends javax.swing.JPanel {
 			}
 		});
 
-		jLabel2.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
-		jLabel2.setText(this.email.getSender());
+		senderEmailLabel.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
+		senderEmailLabel.setText(this.email.getSender().getEmailAddress());
 
-		jLabel3.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
-		jLabel3.setText(this.email.getTimeStamp().toString());
+		timeStampLabel.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
+		timeStampLabel.setText(this.email.getTimeStamp().toString());
 
-		jLabel4.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
-		jLabel4.setText(this.email.getSubject());
+		subjectLabel.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
+		subjectLabel.setText(this.email.getSubject());
 
 		javax.swing.GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
@@ -67,11 +67,11 @@ public class EmailListItem extends javax.swing.JPanel {
 				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(layout.createSequentialGroup()
 								.addContainerGap()
-								.addComponent(jLabel2)
+								.addComponent(senderEmailLabel)
 								.addGap(392, 392, 392)
-								.addComponent(jLabel4)
+								.addComponent(subjectLabel)
 								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
-								.addComponent(jLabel3)
+								.addComponent(timeStampLabel)
 								.addContainerGap())
 		);
 		layout.setVerticalGroup(
@@ -79,20 +79,20 @@ public class EmailListItem extends javax.swing.JPanel {
 						.addGroup(layout.createSequentialGroup()
 								.addGap(18, 18, 18)
 								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-										.addComponent(jLabel2)
-										.addComponent(jLabel3)
-										.addComponent(jLabel4))
+										.addComponent(senderEmailLabel)
+										.addComponent(timeStampLabel)
+										.addComponent(subjectLabel))
 								.addContainerGap(19, Short.MAX_VALUE))
 		);
 	}
 
 	private void formMouseClicked(MouseEvent evt) {
-		new EmailView(null, true, this.email).setVisible(true);
+		new EmailView(null, true, this.email, this.currentInboxType).setVisible(true);
 	}
 
 	private final Email email;
-	private JLabel jLabel1;
-	private JLabel jLabel2;
-	private JLabel jLabel3;
-	private JLabel jLabel4;
+	private final MailBoxType currentInboxType;
+	private JLabel senderEmailLabel;
+	private JLabel timeStampLabel;
+	private JLabel subjectLabel;
 }
