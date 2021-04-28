@@ -56,6 +56,7 @@ public class MainFrame extends JFrame {
             this.inboxLabel = new JLabel();
             this.accountLabel = new JLabel();
             this.createLabels();
+            this.createButtons();
             this.updateUI();
 	}
 
@@ -271,7 +272,7 @@ public class MainFrame extends JFrame {
 	public void updateUI() {
 		this.getEmails();
 		System.out.println("number of emails: " + (this.emails.size() - 1));
-		this.createButtons();
+		
 		System.out.println("created buttons");
 		this.addEmails();
 		System.out.println("added emails");
