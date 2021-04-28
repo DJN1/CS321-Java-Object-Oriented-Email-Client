@@ -15,10 +15,10 @@ public class MailSender {
 
 	private static MailSender mailSenderInstance = null;
 
-	private final ArrayList<Site> siteList;
+	private ArrayList<Site> siteList;
 
 	private MailSender() {
-		this.siteList = SimpleEmail.getInstance().getAllSites();
+            
 	}
 
 	public static MailSender getInstance() {
@@ -61,6 +61,8 @@ public class MailSender {
 	private Site getSite(String emailAddress) {
 		var siteToValidate = parseEmailAddress(emailAddress);
 		System.out.println("site to validate: " + siteToValidate);
+                
+		this.siteList = SimpleEmail.getInstance().getAllSites();
 
 		return siteList.stream().filter(site -> {
 			System.out.println(site.GetFullName());
