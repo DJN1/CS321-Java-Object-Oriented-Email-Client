@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class Site {
 
-	private ArrayList<User> userList;
-	private String name;
-	private String domainSuffix;
-	private String fullName;
+	private final ArrayList<User> userList;
+	private final String name;
+	private final String domainSuffix;
+	private final String fullName;
 	private User activeUser;
 
 	Site(String nameConstructor, String suffix) {
@@ -26,6 +26,7 @@ public class Site {
 		userList = new ArrayList<>();
 	}
 
+	@Override
 	public String toString() {
 		return name;
 	}
@@ -49,10 +50,10 @@ public class Site {
 	public String GetFullName() {
 		return fullName;
 	}
-        
-        public User GetCurrentUser(){
-            return activeUser;
-        }
+
+	public User GetCurrentUser() {
+		return activeUser;
+	}
 
 	public ArrayList<User> getUserList() {
 		return userList;
