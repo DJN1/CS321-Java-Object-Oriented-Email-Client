@@ -1,3 +1,7 @@
+/**
+ * Class: EmailView.java
+ * Purpose: Displays emails in any of the mailboxes.
+ */
 package com.uah.cs321;
 
 import java.awt.Color;
@@ -36,7 +40,7 @@ public class EmailView extends javax.swing.JDialog {
 		this.setLocationRelativeTo(null);
 	}
 
-	@SuppressWarnings("unchecked")
+	// creates the UI
 	private void initComponents() {
 
 		this.senderFieldLabel = new JLabel();
@@ -129,6 +133,7 @@ public class EmailView extends javax.swing.JDialog {
 		pack();
 	}
 
+	// Delete button handler
 	private void sendDeleteButtonActionPerformed(ActionEvent evt) {
 		System.out.println("clicked delete to delete this email");
 		if (this.currentMailBoxType == MailBoxType.TRASH) {
@@ -142,6 +147,7 @@ public class EmailView extends javax.swing.JDialog {
 		this.dispose();
 	}
 
+	// Restore button handler
 	private void restoreButtonActionPerformed(ActionEvent evt) {
 		SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().restoreEmailFromTrash(this.email);
 		JOptionPane.showMessageDialog(this, "Email restored from trash.", "Email restored.", JOptionPane.DEFAULT_OPTION);
@@ -149,6 +155,7 @@ public class EmailView extends javax.swing.JDialog {
 		this.dispose();
 	}
 
+	// set body of emailview
 	public void setBody(String text) {
 		this.bodyField.setText(text);
 	}

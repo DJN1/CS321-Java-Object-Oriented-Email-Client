@@ -13,8 +13,8 @@ import javax.swing.*;
  * @author Zach Walker, Colin, Caleb, David
  */
 public class SwitchSettings {
-	// Displays JFrame that holds buttons for switching user/site
 
+	// Displays JFrame that holds buttons for switching user/site
 	public static void SwitchSettingsPanel() {
 		JFrame ss = new JFrame("Switch User/Site");
 		ss.setSize(400, 400);

@@ -1,3 +1,7 @@
+/**
+ * Class: MailSender.java
+ * Purpose: Handles sending and receiving emails.
+ */
 package com.uah.cs321;
 
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ public class MailSender {
 		return mailSenderInstance;
 	}
 
+	// public facing send message method
 	public boolean sendMessage(User sender, String recepientEmailAddress, Email aEmail) {
 		var recipient = getRecipient(recepientEmailAddress);
 		if (!validateObject(recipient)) {
@@ -39,6 +44,7 @@ public class MailSender {
 		}
 	}
 
+	// get and validate recipient
 	private User getRecipient(String emailAddress) {
 		System.out.println("recipient address: " + emailAddress);
 		var site = getSite(emailAddress);
@@ -53,6 +59,7 @@ public class MailSender {
 		}
 	}
 
+	// get side from email address of recipient
 	private Site getSite(String emailAddress) {
 		var siteToValidate = parseEmailAddress(emailAddress);
 		System.out.println("site to validate: " + siteToValidate);
@@ -65,10 +72,12 @@ public class MailSender {
 		}).findFirst().orElse(null);
 	}
 
+	// parse recipient email address
 	private String parseEmailAddress(String emailAddress) {
 		return emailAddress.substring(emailAddress.lastIndexOf("@") + 1);
 	}
 
+	// validate field inputs
 	private boolean validateObject(Object o) {
 		return o != null;
 	}

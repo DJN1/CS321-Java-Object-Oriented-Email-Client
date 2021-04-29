@@ -1,3 +1,7 @@
+/**
+ * Class: User.java
+ * Purpose: Models user in system.
+ */
 package com.uah.cs321;
 
 /**
@@ -18,22 +22,28 @@ public class User {
 		this.userMailbox = new Mailboxes(this.emailAddress);
 	}
 
+	// returns user name
+	@Override
 	public String toString() {
 		return userName;
 	}
 
+	// returns username
 	public String getUserName() {
 		return this.userName;
 	}
 
+	// returns email address
 	public String getEmailAddress() {
 		return this.emailAddress;
 	}
 
+	// returns users site
 	public String getSiteName() {
 		return this.site.toString();
 	}
 
+	// returns users mailbox
 	public Mailboxes getUserMailbox() {
 		return this.userMailbox;
 	}

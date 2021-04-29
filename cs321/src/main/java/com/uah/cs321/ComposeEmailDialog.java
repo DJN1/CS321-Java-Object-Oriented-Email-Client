@@ -1,3 +1,7 @@
+/**
+ * Class: ComposeEmailDialog.java
+ * Purpose: Creates window with input fields for creating emails.
+ */
 package com.uah.cs321;
 
 import java.awt.Frame;
@@ -24,7 +28,7 @@ public class ComposeEmailDialog extends JDialog {
 		this.setLocationRelativeTo(null);
 	}
 
-	@SuppressWarnings("unchecked")
+	// creates ui
 	private void initComponents() {
 
 		recipientTextField = new javax.swing.JTextField();
@@ -102,6 +106,7 @@ public class ComposeEmailDialog extends JDialog {
 		pack();
 	}
 
+	// send button handler, validates input and "sends" email
 	private void sendEmailButtonActionPerformed(ActionEvent evt) {
 
 		var subject = subjectTextField.getText();
@@ -132,6 +137,7 @@ public class ComposeEmailDialog extends JDialog {
 		this.dispose();
 	}
 
+	// ensures field input is not empty
 	private boolean validateFields(Object o) {
 		return !o.equals("");
 	}

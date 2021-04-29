@@ -1,3 +1,7 @@
+/**
+ * Class: Tester.java
+ * Purpose: Adds users, emails, and emails to test the system.
+ */
 package com.uah.cs321;
 
 /**

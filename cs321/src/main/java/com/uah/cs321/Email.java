@@ -1,3 +1,7 @@
+/**
+ * Class: Email.java
+ * Purpose: Models an email with sender, recipient, body, timestamp and subject.
+ */
 package com.uah.cs321;
 
 import java.util.Date;
@@ -29,22 +33,27 @@ public class Email {
 		this.senderName = aSender;
 	}
 
+	// returns subject
 	public String getSubject() {
 		return this.subject;
 	}
 
+	// returns email body
 	public String getBody() {
 		return this.body;
 	}
 
+	// returns timestamp
 	public Date getTimeStamp() {
 		return this.timeStamp;
 	}
 
+	// returns recipient username
 	public String getRecipient() {
 		return this.recipientName;
 	}
 
+	// returns sender User object
 	public User getSender() {
 		return this.senderName;
 	}

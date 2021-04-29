@@ -1,3 +1,7 @@
+/**
+ * Class: Main.java
+ * Purpose: Runs the tester function and creates and runs GUI.
+ */
 package com.uah.cs321;
 
 /**

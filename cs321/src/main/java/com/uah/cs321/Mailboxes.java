@@ -1,8 +1,13 @@
+/**
+ * Class: MailBoxes.java
+ * Purpose: handles all three mailboxes, input, sent, trash and handles needed functions.
+ */
 package com.uah.cs321;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+// types of mailboxes, used for comparison
 enum MailBoxType {
 	INBOX,
 	SENT,
@@ -27,22 +32,27 @@ public class Mailboxes {
 		this.trashBox = new ArrayList<>();
 	}
 
+	// returns current users email address
 	public String getMailboxUserEmailAddress() {
 		return this.mailboxUserEmailAddress;
 	}
 
+	// returns emails in sent box
 	public ArrayList<Email> getSentBox() {
 		return this.sentBox;
 	}
 
+	// returns emails in inbox
 	public ArrayList<Email> getInbox() {
 		return this.inbox;
 	}
 
+	// returns emails in trashbox
 	public ArrayList<Email> getTrashBox() {
 		return this.trashBox;
 	}
 
+	// deletes email by moving email to trashbox
 	public void sendEmailToTrash(Email aEmail, MailBoxType inboxType) {
 		Email emailToMove;
 		if (inboxType == MailBoxType.INBOX) {
@@ -57,10 +67,12 @@ public class Mailboxes {
 		}
 	}
 
+	// permanently deletes email from trashbox
 	public void deleteEmailFromTrash(Email aEmail) {
 		removeEmailFromBox(aEmail, this.trashBox);
 	}
 
+	// restores email from trashbox into either sent or inbox
 	public void restoreEmailFromTrash(Email aEmail) {
 		if (this.mailboxUserEmailAddress.equals(aEmail.getSender().getEmailAddress())) {
 			this.sentBox.add(aEmail);
@@ -73,19 +85,18 @@ public class Mailboxes {
 		deleteEmailFromTrash(aEmail);
 	}
 
-	public void emptyTrash() {
-		this.trashBox.clear();
-	}
-
+	// private method doing the actual moving from one mailbox to trash
 	private void removeEmailFromBox(Email aEmail, ArrayList<Email> emailBox) {
 		var emailToRemove = emailBox.indexOf(getEmailFromBox(aEmail, emailBox));
 		emailBox.remove(emailToRemove);
 	}
 
+	// finds email
 	private Email getEmailFromBox(Email aEmail, ArrayList<Email> emailBox) {
 		return emailBox.stream().filter(email -> email.getSubject().equals(aEmail.getSubject())).findFirst().orElse(null);
 	}
 
+	// sorts given inbox by timestamp
 	private void sortEmailsDescByTimeStamp(ArrayList<Email> emailBox) {
 		Collections.sort(emailBox, (Email e1, Email e2) -> e2.getTimeStamp().compareTo(e1.getTimeStamp()));
 	}

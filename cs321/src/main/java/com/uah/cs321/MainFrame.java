@@ -1,7 +1,6 @@
 /*
  * Class: MainFrame.java
  * Purpose: This class is the base frame for the email client.
- *
  */
 package com.uah.cs321;
 
@@ -10,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -60,14 +58,15 @@ public class MainFrame extends JFrame {
 		this.updateUI();
 	}
 
+	// populates the email item list that is displayed in mailboxes
 	private void populateEmailList() {
 		this.emailItemList.clear();
 		this.emails.forEach(email -> {
 			this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
 		});
-
 	}
 
+	// get current users emails in appropriate mailbox
 	private void getEmails() {
 		if (SimpleEmail.getInstance().GetCurrentSite() != null) {
 			switch (this.currentMailBoxType) {
@@ -84,6 +83,7 @@ public class MainFrame extends JFrame {
 		}
 	}
 
+	// adds emails to GUI
 	private void addEmails() {
 
 		this.populateEmailList();
@@ -134,6 +134,7 @@ public class MainFrame extends JFrame {
 		this.emailListScrollPane.setPreferredSize(new Dimension(1000, 640));
 	}
 
+	// adds non-email GUI elements to GUI
 	private void addUIElements() {
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 
@@ -198,6 +199,7 @@ public class MainFrame extends JFrame {
 		this.pack();
 	}
 
+	// creates all the buttons
 	private void createButtons() {
 		this.composeEmailButton = new JButton();
 		this.inboxButton = new JButton();
@@ -256,6 +258,7 @@ public class MainFrame extends JFrame {
 		});
 	}
 
+	// creates all the labels
 	private void createLabels() {
 
 		this.emailBoxesLabel.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
@@ -270,61 +273,63 @@ public class MainFrame extends JFrame {
 		this.accountLabel.setText("No Site/User Selected");
 	}
 
+	// updates/redraws UI
 	public void updateUI() {
 		this.getEmails();
-		System.out.println("number of emails: " + (this.emails.size() - 1));
 
 		this.addEmails();
-		System.out.println("added emails");
 		this.addUIElements();
-		System.out.println("added ui elements");
-//		this.repaint();
 		this.setLocationRelativeTo(null);
 	}
 
+	// opens compose email dialog
 	private void composeEmailButtonActionPerformed(ActionEvent evt) {
 		new ComposeEmailDialog(this, this.rootPaneCheckingEnabled).setVisible(true);
 	}
 
+	// opens inbox
 	private void inboxButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.INBOX;
 		this.updateUI();
 		this.inboxLabel.setText("Inbox");
 	}
 
+	// opens sent box
 	private void sentButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.SENT;
 		this.updateUI();
 		this.inboxLabel.setText("Sent");
 	}
 
+	// opens trash box
 	private void trashButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.TRASH;
 		this.updateUI();
 		this.inboxLabel.setText("Trash");
 	}
 
+	// opens manage sites dialog
 	private void manageSitesButtonActionPerformed(ActionEvent evt) {
 		ManageSites.ManageSitesPanel();
 	}
 
+	// opens manage users dialog
 	private void manageUsersButtonActionPerformed(ActionEvent evt) {
 		ManageUsers.ManageUsersPanel();
 	}
 
+	// opens switching between user or site dialog
 	private void switchUserSiteButtonActionPerformed(ActionEvent evt) {
 		SwitchSettings.SwitchSettingsPanel();
 	}
 
+	// opens the mainframe
 	public void openWindow() {
 
 		this.setVisible(true);
 	}
 
-	public void AddItemToList(String item, DefaultListModel model) {
-		model.addElement(item);
-	}
-
+	// updates currently selected user label
 	public void UpdateActiveUserText() {
 		Site activeSite = SimpleEmail.getInstance().GetCurrentSite();
 		this.accountLabel.setText(activeSite.GetCurrentUser() + "@" + activeSite.GetFullName());

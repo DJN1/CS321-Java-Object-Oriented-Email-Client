@@ -1,3 +1,7 @@
+/**
+ * Class: EmailListItem.java
+ * Purpose: Creates email list item for inboxes with sender, subject and timestamp.
+ */
 package com.uah.cs321;
 
 import java.awt.Color;
@@ -27,7 +31,7 @@ public class EmailListItem extends javax.swing.JPanel {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
+	// creates ui
 	private void initComponents() {
 
 		senderEmailLabel = new JLabel();
@@ -76,6 +80,7 @@ public class EmailListItem extends javax.swing.JPanel {
 		);
 	}
 
+	// opens email that was clicked
 	private void formMouseClicked(MouseEvent evt) {
 		new EmailView(null, true, this.email, this.currentInboxType).setVisible(true);
 	}
