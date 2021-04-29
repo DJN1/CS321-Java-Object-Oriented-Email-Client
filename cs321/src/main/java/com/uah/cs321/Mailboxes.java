@@ -3,11 +3,6 @@ package com.uah.cs321;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 enum MailBoxType {
 	INBOX,
 	SENT,
@@ -16,7 +11,7 @@ enum MailBoxType {
 
 /**
  *
- * @author Zach
+ * @author Zach, Colin, Caleb, David
  */
 public class Mailboxes {
 
@@ -60,10 +55,6 @@ public class Mailboxes {
 			this.trashBox.add(0, emailToMove);
 			this.removeEmailFromBox(aEmail, this.sentBox);
 		}
-//		emailToMove = getEmailFromBox(aEmail, emailBox);
-
-//		this.trashBox.add(0, emailToMove);
-//		removeEmailFromBox(aEmail, emailBox);
 	}
 
 	public void deleteEmailFromTrash(Email aEmail) {

@@ -22,7 +22,7 @@ import javax.swing.WindowConstants;
 
 /**
  *
- * @author Colin O'Kain, david
+ * @author Colin, David, Caleb, Zach
  */
 public class MainFrame extends JFrame {
 
@@ -30,41 +30,41 @@ public class MainFrame extends JFrame {
 	 * Creates new form MainFrame
 	 */
 	public MainFrame() {
-            try {
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                        if ("Nimbus".equals(info.getName())) {
-                            System.out.println("Here");
-                                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                                break;
-                        }
-                }
-            } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					System.out.println("Here");
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (InstantiationException ex) {
+			java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (IllegalAccessException ex) {
+			java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+			java.util.logging.Logger.getLogger(this.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
 
-            this.emails = new ArrayList<>();
-            this.currentMailBoxType = MailBoxType.INBOX;
-            this.emailItemList = new ArrayList<>();
-            this.emailBoxesLabel = new JLabel();
-            this.settingsLabel = new JLabel();
-            this.inboxLabel = new JLabel();
-            this.accountLabel = new JLabel();
-            this.createLabels();
-            this.createButtons();
-            this.updateUI();
+		this.emails = new ArrayList<>();
+		this.currentMailBoxType = MailBoxType.INBOX;
+		this.emailItemList = new ArrayList<>();
+		this.emailBoxesLabel = new JLabel();
+		this.settingsLabel = new JLabel();
+		this.inboxLabel = new JLabel();
+		this.accountLabel = new JLabel();
+		this.createLabels();
+		this.createButtons();
+		this.updateUI();
 	}
 
 	private void populateEmailList() {
-            this.emailItemList.clear();
-            this.emails.forEach(email -> {
-                this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
-            });
+		this.emailItemList.clear();
+		this.emails.forEach(email -> {
+			this.emailItemList.add(new EmailListItem(email, currentMailBoxType));
+		});
 
 	}
 
@@ -85,14 +85,13 @@ public class MainFrame extends JFrame {
 	}
 
 	private void addEmails() {
-           
-		this.populateEmailList();
-                
 
-                if(this.emailListPanel != null){
-                    this.emailListPanel.setVisible(false);
-                    this.emailListScrollPane.setVisible(false);
-                }
+		this.populateEmailList();
+
+		if (this.emailListPanel != null) {
+			this.emailListPanel.setVisible(false);
+			this.emailListScrollPane.setVisible(false);
+		}
 
 		this.emailListPanel = new JPanel();
 		this.emailListPanelLayout = new GroupLayout(emailListPanel);
@@ -274,7 +273,7 @@ public class MainFrame extends JFrame {
 	public void updateUI() {
 		this.getEmails();
 		System.out.println("number of emails: " + (this.emails.size() - 1));
-		
+
 		this.addEmails();
 		System.out.println("added emails");
 		this.addUIElements();
@@ -289,7 +288,7 @@ public class MainFrame extends JFrame {
 
 	private void inboxButtonActionPerformed(ActionEvent evt) {
 		this.currentMailBoxType = MailBoxType.INBOX;
-                this.updateUI();
+		this.updateUI();
 		this.inboxLabel.setText("Inbox");
 	}
 
@@ -318,8 +317,8 @@ public class MainFrame extends JFrame {
 	}
 
 	public void openWindow() {
-            
-            this.setVisible(true);
+
+		this.setVisible(true);
 	}
 
 	public void AddItemToList(String item, DefaultListModel model) {

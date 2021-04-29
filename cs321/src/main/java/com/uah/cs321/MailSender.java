@@ -2,14 +2,9 @@ package com.uah.cs321;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
- * @author Zach
+ * @author Zach, Caleb, Colin, David
  */
 public class MailSender {
 
@@ -18,7 +13,7 @@ public class MailSender {
 	private ArrayList<Site> siteList;
 
 	private MailSender() {
-            
+
 	}
 
 	public static MailSender getInstance() {
@@ -61,7 +56,7 @@ public class MailSender {
 	private Site getSite(String emailAddress) {
 		var siteToValidate = parseEmailAddress(emailAddress);
 		System.out.println("site to validate: " + siteToValidate);
-                
+
 		this.siteList = SimpleEmail.getInstance().getAllSites();
 
 		return siteList.stream().filter(site -> {

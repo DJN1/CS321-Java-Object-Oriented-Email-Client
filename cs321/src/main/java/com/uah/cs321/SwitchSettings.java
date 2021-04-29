@@ -10,7 +10,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Zach Walker
+ * @author Zach Walker, Colin, Caleb, David
  */
 public class SwitchSettings {
 	// Displays JFrame that holds buttons for switching user/site
@@ -73,10 +73,10 @@ public class SwitchSettings {
 			return;
 		}
 
-                site.SelectUser(userToSwitchTo);
-                JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
-                Main.simpleEmailFrame.UpdateActiveUserText();
-                Main.simpleEmailFrame.updateUI();
+		site.SelectUser(userToSwitchTo);
+		JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
+		Main.simpleEmailFrame.UpdateActiveUserText();
+		Main.simpleEmailFrame.updateUI();
 	}
 
 	// Displays current user and list of users, prompting the admin user to switch sites
@@ -110,7 +110,7 @@ public class SwitchSettings {
 			return;
 		}
 
-                email.SelectSite(siteToSwitchTo);
-                JOptionPane.showMessageDialog(frame, "Site successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
+		email.SelectSite(siteToSwitchTo);
+		JOptionPane.showMessageDialog(frame, "Site successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
 	}
 }
