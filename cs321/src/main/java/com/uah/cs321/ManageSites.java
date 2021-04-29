@@ -67,10 +67,10 @@ public class ManageSites {
 
 		int result = 2;
 
-		email.RemoveSite(siteToDelete);
 		result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete the site: " + siteToDelete + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
 		if (result == 0) {
+			email.RemoveSite(siteToDelete);
 			JOptionPane.showMessageDialog(frame, "Site successfully deleted.", "Successful delete", JOptionPane.DEFAULT_OPTION);
 		}
 	}
