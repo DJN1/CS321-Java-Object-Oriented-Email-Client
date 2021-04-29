@@ -62,12 +62,12 @@ public class Mailboxes {
 	}
 
 	public void restoreEmailFromTrash(Email aEmail) {
-		if (this.mailboxUserEmailAddress.equals(aEmail.getRecipient())) {
-			this.inbox.add(aEmail);
-			sortEmailsDescByTimeStamp(inbox);
-		} else {
+		if (this.mailboxUserEmailAddress.equals(aEmail.getSender().getEmailAddress())) {
 			this.sentBox.add(aEmail);
 			sortEmailsDescByTimeStamp(sentBox);
+		} else {
+			this.inbox.add(aEmail);
+			sortEmailsDescByTimeStamp(inbox);
 		}
 
 		deleteEmailFromTrash(aEmail);
