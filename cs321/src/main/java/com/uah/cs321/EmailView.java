@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -32,7 +33,7 @@ public class EmailView extends javax.swing.JDialog {
 		this.email = email;
 		this.currentMailBoxType = currentMailBoxType;
 		initComponents();
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);              
 	}
 
 	/**
@@ -50,6 +51,16 @@ public class EmailView extends javax.swing.JDialog {
 		this.senderField = new JTextField();
 		this.subjectField = new JTextField();
 		this.deleteButton = new JButton();
+                this.restoreButton = new JButton();
+                
+                if (this.currentMailBoxType == MailBoxType.TRASH)
+                {
+                    restoreButton.setVisible(true);
+                }
+                else
+                {
+                    restoreButton.setVisible(false);
+                }
 
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setTitle("View Email");
@@ -77,6 +88,12 @@ public class EmailView extends javax.swing.JDialog {
 		this.deleteButton.addActionListener((ActionEvent evt) -> {
 			sendDeleteButtonActionPerformed(evt);
 		});
+                
+                this.restoreButton.setBackground(new Color(255, 0, 0));
+                this.restoreButton.setText("Restore Email");
+                this.restoreButton.addActionListener((ActionEvent evt) -> {
+                        restoreButtonActionPerformed(evt);
+                });
 
 		GroupLayout layout = new GroupLayout(getContentPane());
 		this.getContentPane().setLayout(layout);
@@ -94,6 +111,7 @@ public class EmailView extends javax.swing.JDialog {
 														.addComponent(senderField)
 														.addComponent(subjectField)))
 										.addComponent(bodyScrollContainer, GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE).addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE).addComponent(this.restoreButton)
 										.addGap(0, 0, Short.MAX_VALUE).addComponent(this.deleteButton)
 								))
 								.addContainerGap())
@@ -111,6 +129,7 @@ public class EmailView extends javax.swing.JDialog {
 										.addComponent(subjectField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 								.addComponent(bodyScrollContainer, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.restoreButton)
 								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.deleteButton)
 								.addContainerGap())
 		);
@@ -125,8 +144,18 @@ public class EmailView extends javax.swing.JDialog {
 		} else {
 			SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().sendEmailToTrash(this.email, this.currentMailBoxType);
 		}
-
+                
+                JOptionPane.showMessageDialog(this, "Email deleted.", "Successful delete", JOptionPane.DEFAULT_OPTION);
+                Main.simpleEmailFrame.updateUI();
+                this.dispose();
 	}
+        
+        private void restoreButtonActionPerformed(ActionEvent evt) {
+            SimpleEmail.getInstance().GetCurrentSite().GetCurrentUser().getUserMailbox().restoreEmailFromTrash(this.email);
+            JOptionPane.showMessageDialog(this, "Email restored from trash.", "Email restored.", JOptionPane.DEFAULT_OPTION);
+            Main.simpleEmailFrame.updateUI();
+            this.dispose();
+        }
 
 	public void setBody(String text) {
 		this.bodyField.setText(text);
@@ -135,6 +164,7 @@ public class EmailView extends javax.swing.JDialog {
 	private final Email email;
 	private final MailBoxType currentMailBoxType;
 	private JButton deleteButton;
+        private JButton restoreButton;
 	private JLabel senderFieldLabel;
 	private JLabel subjectFieldLabel;
 	private JScrollPane bodyScrollContainer;

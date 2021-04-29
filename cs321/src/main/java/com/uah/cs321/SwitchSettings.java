@@ -19,7 +19,6 @@ public class SwitchSettings {
 		JFrame ss = new JFrame("Switch User/Site");
 		ss.setSize(400, 400);
 		ss.setLocationRelativeTo(null);
-		//mu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		JPanel mainPanel = new JPanel();
 
@@ -71,20 +70,13 @@ public class SwitchSettings {
 				null, userList, userList[0]);
 
 		if (userToSwitchTo == null) {
-			return; //null;
+			return;
 		}
 
-		int result = 2;
-
-		result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to switch to the user: " + userToSwitchTo + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-		if (result == 0) {
-			site.SelectUser(userToSwitchTo);
-			JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
-                        Main.simpleEmailFrame.UpdateActiveUserText();
-                        Main.simpleEmailFrame.updateUI();
-
-		}
+                site.SelectUser(userToSwitchTo);
+                JOptionPane.showMessageDialog(frame, "User successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
+                Main.simpleEmailFrame.UpdateActiveUserText();
+                Main.simpleEmailFrame.updateUI();
 	}
 
 	// Displays current user and list of users, prompting the admin user to switch sites
@@ -115,23 +107,10 @@ public class SwitchSettings {
 				null, siteList, siteList[0]);
 
 		if (siteToSwitchTo == null) {
-			//System.out.print("No sites have been selected.\n");
-			return; //null;
+			return;
 		}
 
-		int result = 2;
-
-		result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to switch to the site: " + siteToSwitchTo + "?", "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-		if (result == 0) {
-			email.SelectSite(siteToSwitchTo);
-			JOptionPane.showMessageDialog(frame, "Site successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
-			//System.out.print(siteToSwitchTo);
-			//return siteToDelete;
-		}
-//        else
-//        {
-//            System.out.print("No sites have been selected.\n");
-//        }
+                email.SelectSite(siteToSwitchTo);
+                JOptionPane.showMessageDialog(frame, "Site successfully switched.", "Success", JOptionPane.DEFAULT_OPTION);
 	}
 }
